@@ -1,0 +1,452 @@
+/* frontend/src/styles/admin/AdminSettings.css */
+
+/* ==================== PAGE CONTAINER ==================== */
+.admin-settings-page {
+    padding: 24px;
+    animation: adminFadeIn 0.4s ease-out;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@keyframes adminFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== PAGE HEADER ==================== */
+.admin-settings-header {
+    margin-bottom: 28px;
+}
+
+.admin-settings-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--blue), #e0a82b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.admin-settings-header p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* ==================== SETTINGS CONTAINER ==================== */
+.admin-settings-container {
+    display: flex;
+    gap: 24px;
+    background: var(--light-blue);
+    border-radius: 20px;
+    border: 1px solid rgba(245, 196, 94, 0.1);
+    overflow: hidden;
+}
+
+/* ==================== SIDEBAR ==================== */
+.admin-settings-sidebar {
+    width: 260px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    border-right: 1px solid rgba(245, 196, 94, 0.1);
+    flex-shrink: 0;
+}
+
+.admin-settings-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.admin-settings-tab:hover {
+    background: rgba(245, 196, 94, 0.08);
+    color: var(--blue);
+}
+
+.admin-settings-tab.active {
+    background: rgba(245, 196, 94, 0.12);
+    color: var(--blue);
+    border-left: 3px solid var(--blue);
+}
+
+/* ==================== CONTENT AREA ==================== */
+.admin-settings-content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Custom Scrollbar */
+.admin-settings-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.admin-settings-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.admin-settings-content::-webkit-scrollbar-thumb {
+    background: rgba(245, 196, 94, 0.3);
+    border-radius: 3px;
+}
+
+.admin-settings-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 196, 94, 0.5);
+}
+
+/* ==================== SETTINGS SECTION ==================== */
+.admin-settings-section {
+    animation: adminFadeIn 0.3s ease-out;
+}
+
+.admin-settings-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(245, 196, 94, 0.1);
+}
+
+/* ==================== FORM STYLES ==================== */
+.admin-settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+    background: rgba(10, 26, 46, 0.6);
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(245, 196, 94, 0.1);
+}
+
+.admin-form-group textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* ==================== RANGE INPUT ==================== */
+.admin-range-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-range-container input[type="range"] {
+    flex: 1;
+    padding: 0;
+}
+
+.admin-range-value {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(245, 196, 94, 0.1);
+    border-radius: 8px;
+    color: var(--blue);
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 45px;
+    text-align: center;
+}
+
+/* ==================== TOGGLE SWITCH ==================== */
+.admin-toggle-group {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 26, 46, 0.6);
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    border-radius: 30px;
+    padding: 8px 16px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.admin-toggle-switch.active {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+
+.admin-toggle-switch.warning.active {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.admin-toggle-switch:hover {
+    transform: translateY(-1px);
+}
+
+/* ==================== THEME SELECTOR ==================== */
+.admin-theme-selector {
+    display: flex;
+    gap: 16px;
+}
+
+.admin-theme-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(10, 26, 46, 0.6);
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    border-radius: 10px;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.admin-theme-option.active {
+    background: rgba(245, 196, 94, 0.15);
+    border-color: rgba(245, 196, 94, 0.4);
+    color: var(--blue);
+}
+
+.admin-theme-option:hover {
+    transform: translateY(-1px);
+}
+
+/* ==================== COLOR PICKER ==================== */
+.admin-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-color-picker input[type="color"] {
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.admin-color-picker span {
+    font-family: monospace;
+    color: white;
+    font-size: 14px;
+}
+
+/* ==================== ACTION BUTTONS ==================== */
+.admin-settings-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(245, 196, 94, 0.1);
+}
+
+.admin-btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: rgba(245, 196, 94, 0.08);
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    border-radius: 10px;
+    color: var(--blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.admin-btn-secondary:hover {
+    background: rgba(245, 196, 94, 0.15);
+    transform: translateY(-1px);
+}
+
+.admin-btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 28px;
+    background: linear-gradient(135deg, var(--blue), #e0a82b);
+    border: none;
+    border-radius: 10px;
+    color: var(--navy);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 196, 94, 0.3);
+}
+
+.admin-btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.admin-spinning {
+    animation: adminSpin 0.6s linear infinite;
+}
+
+@keyframes adminSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+    .admin-settings-container {
+        flex-direction: column;
+    }
+    
+    .admin-settings-sidebar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 12px;
+        border-right: none;
+        border-bottom: 1px solid rgba(245, 196, 94, 0.1);
+    }
+    
+    .admin-settings-tab {
+        width: auto;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+    
+    .admin-settings-tab.active {
+        border-left: none;
+        background: rgba(245, 196, 94, 0.15);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-settings-page {
+        padding: 16px;
+    }
+    
+    .admin-settings-header h2 {
+        font-size: 24px;
+    }
+    
+    .admin-settings-content {
+        padding: 20px;
+    }
+    
+    .admin-settings-section h3 {
+        font-size: 18px;
+    }
+    
+    .admin-theme-selector {
+        flex-direction: column;
+    }
+    
+    .admin-theme-option {
+        justify-content: center;
+    }
+    
+    .admin-settings-actions {
+        flex-direction: column;
+    }
+    
+    .admin-btn-secondary,
+    .admin-btn-primary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .admin-toggle-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .admin-toggle-switch {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-settings-header h2 {
+        font-size: 20px;
+    }
+    
+    .admin-settings-content {
+        padding: 16px;
+    }
+    
+    .admin-form-group input,
+    .admin-form-group select,
+    .admin-form-group textarea {
+        font-size: 13px;
+    }
+    
+    .admin-settings-tab {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .admin-settings-tab span {
+        display: none;
+    }
+    
+    .admin-settings-tab svg {
+        margin: 0;
+    }
+}

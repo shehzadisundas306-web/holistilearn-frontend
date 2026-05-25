@@ -1,0 +1,362 @@
+/* verification code */
+
+/* --- Root Variables Alignment --- */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(20px);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Global Auth Wrapper --- */
+.auth-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top right, var(--light-blue) 0%, var(--navy) 100%);
+  overflow: hidden;
+  padding: 24px; /* Essential for mobile padding */
+}
+
+/* --- Decorative Background Elements --- */
+.auth-circle-bg {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  pointer-events: none; /* Prevents interaction issues */
+}
+.auth-circle-bg.c1 { width: 40vw; height: 40vw; background: var(--blue); top: -10%; right: -5%; opacity: 0.15; }
+.auth-circle-bg.c2 { width: 35vw; height: 35vw; background: var(--orange); bottom: -5%; left: -5%; opacity: 0.1; }
+
+/* --- The Premium Glass Card --- */
+.verify-card-premium {
+  position: relative;
+  z-index: 10;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+/* --- Icon Box Design --- */
+.verify-icon-box {
+  width: 80px;
+  height: 80px;
+  background: rgba(245, 196, 94, 0.1);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  margin: 0 auto 24px;
+  transition: var(--transition-smooth);
+}
+
+/* --- Typography --- */
+.verify-status-title {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.verify-description {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 24px;
+}
+
+/* --- Forms & Inputs --- */
+.auth-input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--glass-border) !important;
+  color: white !important;
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+  width: 100%;
+  transition: var(--transition-smooth);
+}
+
+.auth-input:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 15px rgba(245, 196, 94, 0.2) !important;
+  outline: none;
+}
+
+/* Modern Browsers */
+.auth-input::placeholder {
+    color: var(--gray) !important;
+    opacity: 1; /* Firefox renders placeholders with lower opacity by default */
+}
+
+/* Chrome, Safari, and Edge */
+.auth-input::-webkit-input-placeholder {
+    color: var(--gray) !important;
+}
+
+/* Firefox 19+ */
+.auth-input::-moz-placeholder {
+    color: var(--gray) !important;
+    opacity: 1;
+}
+
+/* Internet Explorer 10-11 */
+.auth-input:-ms-input-placeholder {
+    color: var(--gray) !important;
+}
+
+/* --- OTP Specific Field Design --- */
+.otp-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.otp-field {
+  width: 48px;
+  height: 58px;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 2px solid var(--glass-border) !important;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue) !important;
+  transition: var(--transition-smooth);
+}
+
+.otp-field:focus {
+  border-color: var(--blue) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* --- Actions & Buttons --- */
+.btn-verify-action {
+  background: var(--blue) !important;
+  color: var(--navy);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 800;
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.btn-verify-action:hover:not(:disabled) {
+  background: #e0b250;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(245, 196, 94, 0.3);
+}
+
+.btn-verify-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 576px) {
+  .verify-card-premium {
+    padding: 35px 20px;
+    border-radius: 20px;
+  }
+
+  .verify-status-title {
+    font-size: 1.5rem;
+  }
+
+  .otp-field {
+    width: 40px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .otp-container {
+    gap: 6px;
+  }
+}
+
+/* --- Utilities --- */
+.text-blue { color: var(--blue) !important; }
+.text-orange { color: var(--orange) !important; }
+.back-link {
+  color: var(--gray);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: var(--transition-smooth);
+}
+.back-link:hover { color: var(--blue); }
+
+
+
+/* Verify email page */
+
+/* --- Root Variables (Keep these at the top) --- */
+:root {
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- BACKGROUND WRAPPER --- */
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, var(--light-blue) 0%, var(--navy) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* --- DECORATIVE BLOBS --- */
+.auth-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.15;
+  animation: float 10s infinite alternate;
+}
+
+.auth-blob.c1 { 
+  width: 400px; 
+  height: 400px; 
+  background: var(--blue); 
+  top: -100px; 
+  right: -100px; 
+}
+
+.auth-blob.c2 { 
+  width: 300px; 
+  height: 300px; 
+  background: #be3d2a; /* Soft Red/Orange */
+  bottom: -50px; 
+  left: -50px; 
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  from { transform: translate(0, 0); }
+  to { transform: translate(20px, 40px); }
+}
+
+/* --- THE GLASS CARD --- */
+.verify-card-glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 60px 40px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* --- ICON STYLING --- */
+.verify-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  background: rgba(245, 196, 94, 0.1); /* Gold tint */
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.verify-icon {
+  font-size: 3.5rem !important;
+  color: var(--blue) !important;
+}
+
+/* --- TEXT STYLING --- */
+.verify-title {
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.verify-text {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.verify-text strong {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* --- BACK LINK --- */
+.back-to-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: var(--transition);
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: rgba(245, 196, 94, 0.05);
+}
+
+.back-to-login:hover {
+  background: rgba(245, 196, 94, 0.15);
+  transform: translateX(-5px);
+  color: #fff;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 576px) {
+  .verify-card-glass {
+    padding: 40px 25px;
+  }
+  
+  .verify-title {
+    font-size: 1.8rem;
+  }
+  
+  .verify-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .verify-icon {
+    font-size: 2.8rem !important;
+  }
+}

@@ -1,0 +1,291 @@
+/* ============================================================
+   UNIFIED RESPONSIVENESS - HOLISTILEARN
+   ============================================================ */
+
+/* 1. LARGE LAPTOPS (Max 1200px) 
+   Fixes spacing and navigation gaps */
+@media (max-width: 1200px) {
+  .navbar-nav { margin-left: 50px !important; }
+  .mega-dropdown { width: 95%; left: 2.5%; }
+  .hero-content h1 { font-size: 3.2rem !important; }
+}
+
+/* 2. TABLETS & SMALL LAPTOPS (Max 992px) 
+   Transitions grids from side-by-side to single column */
+@media (max-width: 992px) {
+  /* Navigation & Topbar */
+  .topbar-left { display: none; }
+  .topbar-right { width: 100%; justify-content: center; }
+  .navbar-nav { margin-left: 0 !important; text-align: center; padding: 20px 0; }
+  .nav-link { margin: 10px 0; }
+
+  /* Hero & Backgrounds */
+  .premium-hero { height: auto; min-height: 85vh; padding: 100px 0; }
+  .hero-content h1 { font-size: 2.8rem !important; }
+  .hero-card { width: 45%; }
+
+  /* Section Grids (Merged here) */
+  .ai-container, 
+  .steps-wrapper, 
+  .about-grid, 
+  .feature-grid, 
+  .feature-right, 
+  .testimonial-grid, 
+  .privacy-grid { 
+    grid-template-columns: 1fr !important; 
+    text-align: center; 
+  }
+
+  /* Specific Adjustments */
+  .image-stack { margin-top: 60px; }
+  .img-bottom { position: relative; bottom: 0; right: 0; margin-top: 20px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  /* About Hero Integration */
+    .about-hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+    .about-title-light {
+        font-size: 3rem;
+    }
+    .about-hero-btns {
+        justify-content: flex-start !important;
+        /* margin-left: 100px !important; */
+    }
+    .ai-visual-integrated {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+
+    /* Mission & Features Grids */
+    .mission-grid, 
+    .features-grid-premium {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+    }
+
+    /* Vision Section */
+    .vision-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+    .vision-icon-tag { margin: 0 auto 20px; }
+    .vision-goals { align-items: center; }
+    .vision-visual { order: -1; } /* Image on top */
+
+    /* How It Works Flow */
+    .process-flow {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+    .step-connector {
+        display: none; /* Hide horizontal dashed lines */
+    }
+    .process-step {
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+/* 3. MOBILE PHONES (Max 768px) 
+   Stacking everything for vertical scrolling */
+@media (max-width: 768px) {
+  /* Header & Topbar */
+  .topbar { height: auto; padding: 8px 0; }
+  .topbar-container { flex-direction: column; gap: 5px; }
+  .logo-text { font-size: 22px !important; }
+
+  /* Hero */
+  .premium-hero { min-height: 100vh; padding: 120px 15px 60px; background-attachment: scroll; }
+  .hero-content h1 { font-size: 2.2rem !important; line-height: 1.2; }
+  .hero-feature-cards { flex-direction: column; align-items: center; }
+  .hero-card { width: 100%; max-width: 350px; margin-bottom: 10px; }
+
+  /* Login & Slider */
+  .login-container { flex-direction: column; }
+  .login-left, .login-slider, .slide { height: 40vh; }
+  .slide { padding: 30px; align-items: center; }
+  .slide h2 { font-size: 18px; text-align: center; }
+  .slider-dots { left: 50%; transform: translateX(-50%); bottom: 15px; }
+
+  /* Layout Components */
+  .role-highlight { flex-direction: column; align-items: center; }
+  .btn-get-started { width: 100%; display: block; text-align: center; }
+  .about-title-light,
+    .simple-title,
+    .title-navy {
+        font-size: 2.5rem;
+    }
+
+    .section-title-navy,
+    .h2-navy,
+    .vision-title {
+        font-size: 2.2rem;
+    }
+
+    /* Stack Grids to Single Column */
+    .mission-grid, 
+    .features-grid-premium {
+        grid-template-columns: 1fr;
+    }
+
+    /* CTA Section */
+    .simple-actions,
+    .cta-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-primary-simple,
+    .btn-cta-main,
+    .btn-outline-integrated {
+        width: 100%;
+        margin-left: 0 !important; /* Remove the left margin on outline buttons */
+    }
+
+    /* Vision Adjustments */
+    .vision-floating-badge {
+        right: 10px;
+        top: -10px;
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+}
+
+/* 4. SMALL PHONES (Max 480px / 600px) 
+   Final polish for tiny screens */
+@media (max-width: 600px) {
+  .why-grid, .footer-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 30px; }
+  .footer { padding-top: 60px; }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 1.8rem !important; }
+  .glass-card h2 { font-size: 22px; }
+  .hero-card { padding: 15px; }
+  .icon-side { font-size: 1.4rem; }
+  .text-side h5 { font-size: 15px; }
+  .text-side p { font-size: 12px; }
+  .about-title-light,
+    .simple-title,
+    .title-navy {
+        font-size: 2rem;
+    }
+
+    .about-hero-unique, 
+    .vision-section-premium, 
+    .how-it-works-premium {
+        padding: 80px 5% 40px;
+    }
+
+    .mission-premium-card,
+    .feature-card-modern,
+    .step-card-modern {
+        padding: 35px 20px;
+    }
+
+    .ai-visual-integrated {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+   
+
+@media (max-width: 1024px) {
+  .ai-grid {
+    gap: 40px;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ai-badge {
+    margin: 0 auto 25px;
+  }
+
+  .ai-feature-item {
+    text-align: left;
+  }
+
+  .ai-visual-side {
+    margin-top: 40px;
+  }
+
+  .modules-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Global Adjustments */
+  .ai-title, .title-white, .process-title-main, .title-navy-bold, .future-title, .cta-headline {
+    font-size: 2.2rem !important; /* Unified smaller heading size for mobile */
+    line-height: 1.2;
+  }
+
+  /* AI Intelligence Section */
+  .ai-intelligence-section {
+    padding: 40px 20px;
+  }
+
+  /* AI Modules Grid */
+  .modules-grid-modern {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* AI Benefits */
+  .benefits-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  /* AI Future Section */
+  .ai-future-premium {
+    padding: 60px 5%;
+  }
+
+  .future-header {
+    margin-bottom: 40px;
+  }
+
+  /* AI CTA Section */
+  .ai-cta-clean {
+    padding: 60px 5%;
+  }
+
+  .btn-ai-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 30px;
+  }
+
+  .cta-subtext {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens adjustments */
+  .ai-main-orb {
+    width: 250px;
+    height: 250px;
+  }
+
+  .inner-pulse {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .data-node {
+    font-size: 0.7rem;
+    padding: 8px 12px;
+  }
+}
+

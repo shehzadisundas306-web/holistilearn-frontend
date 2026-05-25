@@ -1,0 +1,505 @@
+/* ============================================
+   TEACHER SETUP PROFILE STYLES
+   ============================================ */
+
+:root {
+  --navy: #102E50;
+  --blue: #F5C45E;
+  --light-blue: #10375C;
+  --orange: #BE3D2A;
+  --gray: #aba8a8;
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+}
+
+/* Main Container */
+.teacher-setup-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--light-blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* Loading State */
+.setup-loading {
+  text-align: center;
+  color: white;
+  background: rgba(16, 46, 80, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 28px;
+  border: 1px solid rgba(245, 196, 94, 0.3);
+}
+
+.setup-loading .loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(245, 196, 94, 0.2);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.setup-loading p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Main Card */
+.teacher-setup-card {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(16, 46, 80, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.setup-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.setup-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  display: inline-block;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.setup-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff, var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+
+.setup-header p {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* Error Banner */
+.error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fca5a5;
+  font-size: 14px;
+}
+
+.error-banner svg {
+  flex-shrink: 0;
+}
+
+/* Form */
+.setup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #e2e8f0;
+  font-size: 14px;
+}
+
+.form-group label svg {
+  color: var(--blue);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(245, 196, 94, 0.2);
+  border-radius: 12px;
+  font-size: 14px;
+  color: #fff;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 3px rgba(245, 196, 94, 0.1);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: var(--error);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.form-group input:disabled,
+.form-group textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Text */
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fca5a5;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Character Counter */
+.char-count {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 4px;
+}
+
+.char-count .warning {
+  color: var(--warning);
+}
+
+.valid-icon {
+  color: var(--success);
+}
+
+/* Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, var(--blue) 0%, #d4a832 100%);
+  color: var(--navy);
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(245, 196, 94, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Button Spinner */
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(16, 46, 80, 0.3);
+  border-top-color: var(--navy);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Info Box */
+.setup-info {
+  margin-top: 24px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border-left: 4px solid var(--blue);
+}
+
+.setup-info p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.setup-info strong {
+  color: #e2e8f0;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .teacher-setup-card {
+    padding: 24px;
+  }
+  
+  .setup-header h1 {
+    font-size: 22px;
+  }
+  
+  .setup-header p {
+    font-size: 13px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  .setup-icon {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .teacher-setup-card {
+    padding: 20px;
+  }
+  
+  .setup-header h1 {
+    font-size: 20px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .char-count {
+    font-size: 10px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .teacher-setup-card {
+    background: rgba(10, 20, 30, 0.95);
+  }
+}
+
+/* Animation for form fields */
+.form-group input,
+.form-group textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus ring effect */
+.form-group input:focus,
+.form-group textarea:focus {
+  box-shadow: 0 0 0 3px rgba(245, 196, 94, 0.2);
+}
+
+/* Scrollbar styling */
+.teacher-setup-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.teacher-setup-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.teacher-setup-container::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 3px;
+}
+
+/* Success animation */
+@keyframes successPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* Loading overlay for submission */
+.submit-btn.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+}
+
+/* Number input spinners */
+.form-group input[type="number"]::-webkit-inner-spin-button,
+.form-group input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
+.form-group input[type="number"]:hover::-webkit-inner-spin-button,
+.form-group input[type="number"]:hover::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* Success state for valid fields */
+.form-group input.valid,
+.form-group textarea.valid {
+  border-color: var(--success);
+}
+
+.form-group input.valid:focus,
+.form-group textarea.valid:focus {
+  border-color: var(--success);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Helper text styling */
+.helper-text {
+  font-size: 11px;
+  color: var(--gray);
+  margin-top: 4px;
+  display: block;
+}
+
+/* Optional: Add a subtle gradient animation to the card on hover */
+.teacher-setup-card:hover {
+  border-color: rgba(245, 196, 94, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Add to setup.css */
+
+.info-banner {
+  background: rgba(245, 196, 94, 0.1);
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blue);
+  font-size: 13px;
+}
+
+.info-banner svg {
+  flex-shrink: 0;
+  color: #10b981;
+}
+
+.setup-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(245, 196, 94, 0.2);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}

@@ -1,0 +1,682 @@
+/* TeacherJoinLiveClass.css */
+
+:root {
+  --navy: #102E50;
+  --blue: #F5C45E;
+  --light-blue: #10375C;
+  --orange: #BE3D2A;
+  --gray: #aba8a8;
+  --dark-bg: #0a1a2e;
+  --card-bg: #0f2a42;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+}
+
+.teacher-join-live-class {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--navy) 100%);
+  padding: 20px;
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--navy) 100%);
+}
+
+/* Main Container */
+.main-container {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--dark-bg);
+}
+
+/* Header */
+.meeting-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0 8px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 196, 94, 0.1);
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  color: var(--blue);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(245, 196, 94, 0.2);
+  transform: translateX(-4px);
+}
+
+.meeting-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, var(--blue) 0%, #e5a94d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Header Controls */
+.header-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Participant Button */
+.participant-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 196, 94, 0.1);
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  color: var(--blue);
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.participant-button:hover {
+  background: rgba(245, 196, 94, 0.2);
+  transform: translateY(-2px);
+}
+
+.participant-count {
+  background: var(--orange);
+  color: white;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* End Session Button */
+.end-session-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.end-session-button:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.end-session-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Participants Sidebar */
+.participants-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  width: 320px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(245, 196, 94, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--blue);
+  margin: 0;
+}
+
+.close-sidebar {
+  background: none;
+  border: none;
+  color: var(--gray);
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.close-sidebar:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--blue);
+}
+
+.participants-list {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 400px;
+}
+
+/* Teacher Item */
+.teacher-item {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Participant Item */
+.participant-item {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.participant-item:hover {
+  background: rgba(245, 196, 94, 0.1);
+  transform: translateX(4px);
+}
+
+/* Avatars */
+.teacher-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  background: linear-gradient(135deg, var(--success), #0d9668);
+  color: white;
+  flex-shrink: 0;
+}
+
+.student-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  background: linear-gradient(135deg, var(--info), #2563eb);
+  color: white;
+  flex-shrink: 0;
+}
+
+/* Participant Info */
+.participant-info {
+  flex: 1;
+}
+
+.participant-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+.participant-name strong {
+  color: white;
+}
+
+.participant-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.teacher-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.participant-time {
+  font-size: 11px;
+  color: var(--gray);
+}
+
+/* Empty Participants */
+.empty-participants {
+  padding: 32px;
+  text-align: center;
+  color: var(--gray);
+}
+
+/* Jitsi Container */
+.jitsi-container {
+  flex: 1;
+  min-height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid rgba(245, 196, 94, 0.1);
+  position: relative;
+}
+
+.jitsi-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Error Container */
+.error-container {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  max-width: 500px;
+  margin: 80px auto;
+  border: 1px solid rgba(245, 196, 94, 0.1);
+}
+
+.error-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.error-container h2 {
+  font-size: 28px;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.error-message {
+  color: var(--gray);
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.error-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue);
+  color: var(--navy);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error-button:hover {
+  background: #e5a94d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 196, 94, 0.3);
+}
+
+/* No Meeting Container */
+.no-meeting-container {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--card-bg);
+  border-radius: 24px;
+  max-width: 500px;
+  margin: 80px auto;
+  border: 1px solid rgba(245, 196, 94, 0.1);
+}
+
+.no-meeting-container h2 {
+  font-size: 24px;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+
+.no-meeting-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue);
+  color: var(--navy);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.no-meeting-button:hover {
+  background: #e5a94d;
+  transform: translateY(-2px);
+}
+
+/* Live Indicator */
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--danger);
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.live-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar */
+.participants-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.participants-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.participants-list::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 3px;
+}
+
+.participants-list::-webkit-scrollbar-thumb:hover {
+  background: #e5a94d;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .participants-sidebar {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .teacher-join-live-class {
+    padding: 12px;
+  }
+  
+  .main-container {
+    padding: 12px;
+  }
+  
+  .meeting-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .back-button {
+    padding: 8px 16px;
+  }
+  
+  .meeting-title {
+    font-size: 18px;
+  }
+  
+  .header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .participant-button,
+  .end-session-button {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .participants-sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: 60vh;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .participants-sidebar {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .jitsi-container {
+    min-height: 400px;
+  }
+  
+  .error-container,
+  .no-meeting-container {
+    margin: 40px 16px;
+    padding: 40px 20px;
+  }
+  
+  .error-container h2,
+  .no-meeting-container h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .back-button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .header-controls {
+    flex-direction: column;
+  }
+  
+  .participant-button,
+  .end-session-button {
+    width: 100%;
+  }
+  
+  .participant-item {
+    padding: 8px 12px;
+  }
+  
+  .teacher-avatar,
+  .student-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .participant-name {
+    font-size: 13px;
+  }
+}
+
+/* Focus Visible Styles */
+button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* Toast Customization */
+.teacher-join-live-class .sonner-toast {
+  background: var(--card-bg);
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  color: var(--blue);
+}
+
+/* Fullscreen Mode */
+.jitsi-container:fullscreen {
+  background: var(--dark-bg);
+}
+
+/* Audio/Video Control Indicators (Optional) */
+.media-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px 16px;
+  border-radius: 40px;
+  backdrop-filter: blur(8px);
+}
+
+.media-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.media-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.media-button.muted {
+  background: var(--danger);
+  color: white;
+}
+
+/* Loading Spinner Override */
+.loading-container .loading-spinner {
+  margin-bottom: 20px;
+}
+
+.loading-container p {
+  color: var(--blue);
+  font-size: 16px;
+}
+
+/* Animation for participant join/leave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.participant-item {
+  animation: fadeIn 0.3s ease-out;
+}

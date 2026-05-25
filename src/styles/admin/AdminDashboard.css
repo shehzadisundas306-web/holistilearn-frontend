@@ -1,0 +1,2597 @@
+/* frontend/src/styles/admin/AdminDashboard.css */
+
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 90px;
+    --topbar-height: 78px;
+
+    --bg-primary: #081120;
+    --bg-secondary: #0f1b2d;
+    --bg-card: #11243a;
+    --bg-hover: rgba(255,255,255,0.04);
+
+    --border-color: rgba(255,255,255,0.08);
+
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --accent: #f5c45e;
+    --accent-soft: rgba(245,196,94,0.12);
+
+    --success: #10b981;
+    --danger: #ef4444;
+
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.25);
+
+    --transition: all 0.25s ease;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: Inter, sans-serif;
+}
+
+/* =========================
+   ADMIN LAYOUT
+========================= */
+
+.admin-layout {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #07101d 0%, #0c1727 100%);
+}
+
+/* =========================
+   SIDEBAR WRAPPER
+========================= */
+
+.admin-sidebar-desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.admin-sidebar-desktop.collapsed {
+    width: var(--sidebar-collapsed-width);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.admin-sidebar {
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 18, 32, 0.96);
+    backdrop-filter: blur(18px);
+    border-right: 1px solid var(--border-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+/* =========================
+   SIDEBAR HEADER
+========================= */
+
+.sidebar-header {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f5c45e, #e0a82b);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    box-shadow: 0 6px 18px rgba(245,196,94,0.3);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.sidebar-nav {
+    flex: 1;
+    padding: 22px 14px;
+    overflow-y: auto;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+}
+
+.nav-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 15px 18px;
+    margin-bottom: 8px;
+
+    border-radius: 16px;
+
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: var(--transition);
+
+    overflow: hidden;
+}
+
+.nav-item svg {
+    flex-shrink: 0;
+}
+
+.nav-item:hover {
+    background: var(--bg-hover);
+    color: white;
+    transform: translateX(3px);
+}
+
+.nav-item.active {
+    background: linear-gradient(
+        90deg,
+        rgba(245,196,94,0.22),
+        rgba(245,196,94,0.08)
+    );
+    color: var(--accent);
+    border: 1px solid rgba(245,196,94,0.15);
+}
+
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    border-radius: 10px;
+    background: var(--accent);
+}
+
+/* =========================
+   SIDEBAR FOOTER
+========================= */
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.logout-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 14px 18px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: rgba(239,68,68,0.1);
+    color: #ff7b7b;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.logout-btn:hover {
+    background: rgba(239,68,68,0.2);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.admin-main {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+
+    transition: var(--transition);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-main.collapsed {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.admin-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+
+    height: var(--topbar-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background: rgba(8,17,32,0.9);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.sidebar-toggle-btn {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 14px;
+    border: 1px solid rgba(245,196,94,0.15);
+
+    background: rgba(245,196,94,0.08);
+    color: var(--accent);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.sidebar-toggle-btn:hover {
+    background: rgba(245,196,94,0.16);
+    transform: scale(1.05);
+}
+
+/* =========================
+   ADMIN CONTENT
+========================= */
+
+.admin-content {
+    flex: 1;
+    width: 100%;
+    background-color: #fff;
+    padding: 18px;
+
+    overflow-x: hidden;
+}
+
+/* =========================
+   MOBILE SIDEBAR
+========================= */
+
+.admin-sidebar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 280px;
+    height: 100vh;
+
+    z-index: 2000;
+
+    animation: slideIn 0.25s ease forwards;
+}
+
+.mobile-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+
+    z-index: 1500;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* =========================================
+   ADMIN TOPBAR
+========================================= */
+
+.admin-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    height: 78px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background: rgba(8, 17, 32, 0.92);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    transition: all 0.25s ease;
+}
+
+/* =========================================
+   LEFT SECTION
+========================================= */
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    min-width: 0;
+}
+
+.page-title {
+    margin: 0;
+
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* =========================================
+   MENU BUTTONS
+========================================= */
+
+.menu-btn,
+.mobile-menu-btn {
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(245, 196, 94, 0.15);
+    border-radius: 14px;
+
+    background: rgba(245, 196, 94, 0.08);
+    color: #f5c45e;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    flex-shrink: 0;
+}
+
+.menu-btn:hover,
+.mobile-menu-btn:hover {
+    background: rgba(245, 196, 94, 0.16);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(245, 196, 94, 0.12);
+}
+
+.menu-btn:active,
+.mobile-menu-btn:active {
+    transform: scale(0.96);
+}
+
+/* Hide mobile menu on desktop */
+.mobile-menu-btn {
+    display: none;
+}
+
+/* =========================================
+   RIGHT SECTION
+========================================= */
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* =========================================
+   NOTIFICATION BUTTON
+========================================= */
+
+.notification-btn {
+    position: relative;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.notification-btn:hover {
+    background: rgba(245, 196, 94, 0.1);
+    border-color: rgba(245, 196, 94, 0.18);
+    color: #f5c45e;
+
+    transform: translateY(-2px);
+}
+
+/* Optional notification dot */
+.notification-btn::after {
+    content: "";
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 8px;
+    height: 8px;
+
+    background: #ef4444;
+    border-radius: 50%;
+
+    border: 2px solid #081120;
+}
+
+/* =========================================
+   USER MENU
+========================================= */
+
+.user-menu {
+    position: relative;
+}
+
+.user-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    height: 50px;
+
+    padding: 0 14px 0 10px;
+
+    background: rgba(255,255,255,0.03);
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.user-btn:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(245,196,94,0.15);
+
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   USER AVATAR
+========================================= */
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #f5c45e, #e0a82b);
+
+    color: #0f172a;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow: 0 4px 14px rgba(245,196,94,0.22);
+
+    flex-shrink: 0;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #ffffff;
+
+    white-space: nowrap;
+}
+
+/* =========================================
+   DROPDOWN
+========================================= */
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+
+    width: 220px;
+
+    background: #11243a;
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+
+    padding: 10px;
+
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+
+    animation: dropdownFade 0.2s ease;
+
+    overflow: hidden;
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   DROPDOWN ITEMS
+========================================= */
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 8px 0;
+
+    background: rgba(255,255,255,0.08);
+}
+
+.text-danger {
+    color: #f87171;
+}
+
+.text-danger:hover {
+    background: rgba(239,68,68,0.12);
+}
+
+/* ==================== LOGOUT MODAL STYLES ==================== */
+
+/* Full-screen Overlay */
+.admin-topbar-logout-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 18, 30, 0.85); /* Deep dark tint */
+    backdrop-filter: blur(8px); /* Blur background for focus */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    animation: modalFadeIn 0.3s ease;
+}
+
+/* Modal Container */
+.admin-topbar-logout-modal {
+    background: #102E50; /* Brand Navy */
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    animation: modalSlideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Header & Alert Icon */
+.admin-topbar-logout-modal-header {
+    padding: 32px 32px 16px;
+    text-align: center;
+}
+
+.admin-topbar-logout-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background: rgba(239, 68, 68, 0.1); /* Red tint */
+    color: #ef4444; /* Alert Red */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.admin-topbar-logout-modal-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.admin-topbar-logout-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #94a3b8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-topbar-logout-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* Body Text */
+.admin-topbar-logout-modal-body {
+    padding: 0 40px 32px;
+    text-align: center;
+}
+
+.admin-topbar-logout-modal-body p {
+    color: #e2e8f0;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.admin-topbar-logout-warning {
+    color: #64748b !important;
+    font-size: 14px !important;
+}
+
+/* Footer Buttons */
+.admin-topbar-logout-modal-footer {
+    padding: 0 32px 32px;
+    display: flex;
+    gap: 12px;
+}
+
+.admin-topbar-logout-cancel-btn {
+    flex: 1;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-topbar-logout-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.admin-topbar-logout-confirm-btn {
+    flex: 1;
+    padding: 12px;
+    background: #ef4444; /* Danger Red */
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-topbar-logout-confirm-btn:hover:not(:disabled) {
+    background: #dc2626;
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+}
+
+.admin-topbar-logout-confirm-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.admin-topbar-logout-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+
+/* ===================================================
+   ADMIN LAYOUT RESPONSIVENESS
+   =================================================== */
+
+/* Large Screens (1200px - 1400px) */
+@media (max-width: 1400px) {
+  .admin-sidebar-desktop {
+    --sidebar-width: 280px;
+    --sidebar-collapsed-width: 90px;
+  }
+  
+  .topbar-title,
+  .page-title {
+    font-size: 22px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+  }
+  
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+  
+  .sidebar-header {
+    height: 75px;
+    padding: 0 18px;
+  }
+  
+  .nav-item {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .admin-content {
+    padding: 16px;
+  }
+}
+
+/* Tablet Screens (992px - 1199px) */
+@media (max-width: 1199px) {
+  .admin-sidebar-desktop {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 85px;
+  }
+  
+  .topbar-title,
+  .page-title {
+    font-size: 20px;
+  }
+  
+  .logo-text {
+    font-size: 18px;
+  }
+  
+  .sidebar-header {
+    height: 70px;
+    padding: 0 15px;
+  }
+  
+  .nav-item {
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    gap: 12px;
+  }
+  
+  .nav-item svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .logout-btn {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  .admin-topbar {
+    height: 70px;
+    padding: 0 20px;
+  }
+  
+  .menu-btn,
+  .mobile-menu-btn,
+  .notification-btn {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .user-btn {
+    height: 46px;
+    padding: 0 12px 0 8px;
+  }
+  
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .user-name {
+    font-size: 13px;
+  }
+  
+  .admin-content {
+    padding: 14px;
+  }
+}
+
+/* Small Tablet / Large Mobile (768px - 991px) */
+@media (max-width: 991px) {
+  .admin-sidebar-desktop {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .admin-sidebar-desktop.show {
+    transform: translateX(0);
+    width: var(--sidebar-width);
+  }
+  
+  .admin-main {
+    margin-left: 0 !important;
+  }
+  
+  .admin-main.collapsed {
+    margin-left: 0 !important;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  .menu-btn {
+    display: none;
+  }
+  
+  .topbar-title,
+  .page-title {
+    font-size: 18px;
+  }
+  
+  .admin-topbar {
+    height: 65px;
+    padding: 0 16px;
+  }
+  
+  .menu-btn,
+  .mobile-menu-btn,
+  .notification-btn {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .user-btn {
+    height: 42px;
+    padding: 0 10px 0 6px;
+  }
+  
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  
+  .user-name {
+    font-size: 12px;
+  }
+  
+  .user-dropdown {
+    width: 200px;
+  }
+  
+  .dropdown-item {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .admin-content {
+    padding: 12px;
+  }
+  
+  /* Logout Modal Mobile */
+  .admin-topbar-logout-modal {
+    max-width: 380px;
+    margin: 0 20px;
+  }
+  
+  .admin-topbar-logout-modal-header {
+    padding: 24px 24px 12px;
+  }
+  
+  .admin-topbar-logout-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 16px;
+  }
+  
+  .admin-topbar-logout-modal-header h3 {
+    font-size: 20px;
+  }
+  
+  .admin-topbar-logout-modal-body {
+    padding: 0 24px 24px;
+  }
+  
+  .admin-topbar-logout-modal-footer {
+    padding: 0 24px 24px;
+    gap: 10px;
+  }
+  
+  .admin-topbar-logout-cancel-btn,
+  .admin-topbar-logout-confirm-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media (max-width: 767px) {
+  .admin-sidebar-desktop {
+    --sidebar-width: 280px;
+  }
+  
+  .sidebar-header {
+    height: 65px;
+    padding: 0 16px;
+  }
+  
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+  
+  .logo-text {
+    font-size: 16px;
+  }
+  
+  .sidebar-nav {
+    padding: 16px 12px;
+  }
+  
+  .nav-item {
+    padding: 10px 12px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    gap: 10px;
+  }
+  
+  .nav-item svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .sidebar-footer {
+    padding: 16px;
+  }
+  
+  .logout-btn {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .admin-topbar {
+    height: 60px;
+    padding: 0 14px;
+  }
+  
+  .topbar-title,
+  .page-title {
+    font-size: 16px;
+  }
+  
+  .menu-btn,
+  .mobile-menu-btn,
+  .notification-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .user-btn {
+    height: 38px;
+    padding: 0 8px 0 6px;
+    gap: 8px;
+  }
+  
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+  
+  .user-name {
+    font-size: 11px;
+  }
+  
+  .user-dropdown {
+    width: 190px;
+  }
+  
+  .dropdown-item {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .admin-content {
+    padding: 10px;
+  }
+  
+  /* Logout Modal Mobile Landscape */
+  .admin-topbar-logout-modal-header {
+    padding: 20px 20px 10px;
+  }
+  
+  .admin-topbar-logout-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+  }
+  
+  .admin-topbar-logout-modal-header h3 {
+    font-size: 18px;
+  }
+  
+  .admin-topbar-logout-modal-body {
+    padding: 0 20px 20px;
+  }
+  
+  .admin-topbar-logout-modal-body p {
+    font-size: 14px;
+  }
+  
+  .admin-topbar-logout-warning {
+    font-size: 12px !important;
+  }
+  
+  .admin-topbar-logout-modal-footer {
+    padding: 0 20px 20px;
+  }
+  
+  .admin-topbar-logout-cancel-btn,
+  .admin-topbar-logout-confirm-btn {
+    padding: 8px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile Portrait (up to 575px) */
+@media (max-width: 575px) {
+  .admin-sidebar-desktop {
+    --sidebar-width: 260px;
+  }
+  
+  .sidebar-header {
+    height: 60px;
+    padding: 0 14px;
+  }
+  
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+  
+  .logo-text {
+    font-size: 15px;
+  }
+  
+  .sidebar-nav {
+    padding: 12px 10px;
+  }
+  
+  .nav-item {
+    padding: 8px 10px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  
+  .nav-item svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .sidebar-footer {
+    padding: 12px;
+  }
+  
+  .logout-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .admin-topbar {
+    height: 55px;
+    padding: 0 12px;
+  }
+  
+  .topbar-title,
+  .page-title {
+    font-size: 14px;
+  }
+  
+  .menu-btn,
+  .mobile-menu-btn,
+  .notification-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .user-btn {
+    height: 34px;
+    padding: 0 6px;
+    gap: 6px;
+  }
+  
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 9px;
+  }
+  
+  .user-name {
+    font-size: 10px;
+  }
+  
+  .user-dropdown {
+    width: 170px;
+    right: -10px;
+  }
+  
+  .dropdown-item {
+    padding: 8px 10px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  
+  .dropdown-item svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .admin-content {
+    padding: 8px;
+  }
+  
+  /* Notification dot adjustment */
+  .notification-btn::after {
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+  }
+  
+  /* Logout Modal Mobile Portrait */
+  .admin-topbar-logout-modal {
+    max-width: 340px;
+  }
+  
+  .admin-topbar-logout-modal-header {
+    padding: 18px 18px 8px;
+  }
+  
+  .admin-topbar-logout-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 12px;
+  }
+  
+  .admin-topbar-logout-icon-wrapper svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .admin-topbar-logout-modal-header h3 {
+    font-size: 16px;
+  }
+  
+  .admin-topbar-logout-close-btn {
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .admin-topbar-logout-modal-body {
+    padding: 0 18px 18px;
+  }
+  
+  .admin-topbar-logout-modal-body p {
+    font-size: 13px;
+  }
+  
+  .admin-topbar-logout-warning {
+    font-size: 11px !important;
+  }
+  
+  .admin-topbar-logout-modal-footer {
+    padding: 0 18px 18px;
+    gap: 8px;
+  }
+  
+  .admin-topbar-logout-cancel-btn,
+  .admin-topbar-logout-confirm-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .admin-topbar-logout-spinner {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Extra Small Devices (up to 380px) */
+@media (max-width: 380px) {
+  .admin-sidebar-desktop {
+    --sidebar-width: 250px;
+  }
+  
+  .logo-text {
+    font-size: 14px;
+  }
+  
+  .topbar-title,
+  .page-title {
+    font-size: 12px;
+  }
+  
+  .menu-btn,
+  .mobile-menu-btn,
+  .notification-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .user-btn {
+    padding: 0 8px;
+  }
+  
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .user-dropdown {
+    width: 160px;
+  }
+  
+  /* Logout Modal Extra Small */
+  .admin-topbar-logout-modal {
+    max-width: 300px;
+  }
+  
+  .admin-topbar-logout-modal-header {
+    padding: 16px 16px 8px;
+  }
+  
+  .admin-topbar-logout-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .admin-topbar-logout-modal-header h3 {
+    font-size: 15px;
+  }
+  
+  .admin-topbar-logout-modal-body {
+    padding: 0 16px 16px;
+  }
+  
+  .admin-topbar-logout-modal-body p {
+    font-size: 12px;
+  }
+  
+  .admin-topbar-logout-modal-footer {
+    padding: 0 16px 16px;
+  }
+  
+  .admin-topbar-logout-cancel-btn,
+  .admin-topbar-logout-confirm-btn {
+    padding: 6px;
+    font-size: 11px;
+  }
+}
+
+/* Height-based responsive for smaller screens */
+@media (max-height: 700px) and (max-width: 991px) {
+  .sidebar-nav {
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+  }
+  
+  .nav-item {
+    padding: 6px 10px;
+    margin-bottom: 2px;
+  }
+  
+  .sidebar-header {
+    height: 55px;
+  }
+  
+  .sidebar-footer {
+    padding: 10px;
+  }
+  
+  .logout-btn {
+    padding: 8px 10px;
+  }
+}
+
+/* Tablet Landscape specific */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .admin-sidebar-desktop {
+    --sidebar-width: 240px;
+  }
+  
+  .admin-topbar {
+    height: 65px;
+  }
+  
+  .sidebar-nav {
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* Print styles */
+@media print {
+  .admin-sidebar-desktop,
+  .admin-topbar,
+  .mobile-overlay {
+    display: none !important;
+  }
+  
+  .admin-main,
+  .admin-main.collapsed {
+    margin-left: 0 !important;
+  }
+  
+  .admin-content {
+    padding: 0 !important;
+    background: white !important;
+  }
+  
+  .admin-topbar-logout-modal-overlay {
+    display: none !important;
+  }
+}
+
+
+/* ==================== ADMIN PROFILE MODAL ==================== */
+
+.admin-topbar-profile-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 18, 30, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.admin-topbar-profile-modal {
+    background: #102E50; /* Brand Navy */
+    width: 100%;
+    max-width: 500px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Ensures vertical stacking */
+    animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Proper Modal Header */
+.admin-topbar-profile-modal-header {
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.15); /* Slightly darker to define area */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-topbar-profile-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.admin-topbar-profile-close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #94a3b8;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-topbar-profile-close-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+/* Modal Body */
+.admin-topbar-profile-modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Avatar Section */
+.admin-topbar-profile-avatar-section {
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.admin-topbar-profile-avatar-large {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #F5C45E, #e0a82b);
+    color: #08121e;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 25px rgba(245, 196, 94, 0.25);
+}
+
+.admin-topbar-profile-avatar-info h4 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.admin-topbar-profile-role {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #F5C45E;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.admin-topbar-profile-edit-btn {
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-topbar-profile-edit-btn:hover {
+    background: #F5C45E;
+    color: #08121e;
+    border-color: #F5C45E;
+    transform: translateY(-2px);
+}
+
+/* Detail Items Grid */
+.admin-topbar-profile-details {
+    padding: 10px 30px 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.admin-topbar-profile-detail-item {
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-topbar-profile-detail-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(245, 196, 94, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F5C45E;
+    flex-shrink: 0;
+}
+
+.admin-topbar-profile-detail-label {
+    display: block;
+    font-size: 10px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.admin-topbar-profile-detail-value {
+    margin: 0;
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+/* Status Section */
+.admin-topbar-profile-status {
+    margin: 0 30px 30px;
+    padding: 18px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-topbar-profile-status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.admin-topbar-profile-status-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.admin-topbar-profile-status-value {
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Proper Modal Footer */
+.admin-topbar-profile-modal-footer {
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.15); /* Match header for balance */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: right;
+}
+
+.admin-topbar-profile-close-modal-btn {
+    padding: 12px 35px;
+    background: #F5C45E; /* Brand Gold for Primary action */
+    color: #08121e;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-topbar-profile-close-modal-btn:hover {
+    background: #ffffff;
+    transform: scale(1.02);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalPopUp {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 550px) {
+    .admin-topbar-profile-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-topbar-profile-status {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* ==================== ADMIN EDIT PROFILE MODAL ==================== */
+
+.admin-topbar-edit-profile-modal {
+    background: #102E50; /* Brand Navy */
+    width: 100%;
+    max-width: 520px;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* Form Layout */
+.admin-topbar-edit-profile-form {
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.admin-topbar-edit-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-topbar-edit-form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: 4px;
+}
+
+.admin-topbar-edit-form-group input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.admin-topbar-edit-form-group input:focus {
+    outline: none;
+    border-color: #F5C45E;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 4px rgba(245, 196, 94, 0.1);
+}
+
+/* Divider Styling */
+.admin-topbar-edit-divider {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.admin-topbar-edit-divider span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #F5C45E; /* Brand Gold */
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.admin-topbar-edit-divider::after {
+    content: "";
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    width: 100%;
+    margin-left: 15px;
+}
+
+/* Password Input with Eye Toggle */
+.admin-topbar-edit-password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.admin-topbar-edit-password-input input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.admin-topbar-edit-password-toggle {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.admin-topbar-edit-password-toggle:hover {
+    color: #F5C45E;
+}
+
+/* Footer & Buttons */
+.admin-topbar-edit-profile-modal-footer {
+    padding: 20px 30px;
+    background: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.admin-topbar-edit-cancel-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-topbar-edit-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.admin-topbar-edit-save-btn {
+    background: #F5C45E;
+    color: #08121e;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-topbar-edit-save-btn:hover:not(:disabled) {
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.admin-topbar-edit-save-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Loading Spinner */
+.admin-topbar-edit-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(8, 18, 30, 0.3);
+    border-top-color: #08121e;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Form Scrollability for Smaller Screens */
+@media (max-height: 800px) {
+    .admin-topbar-profile-modal-body {
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+}
+
+/* Add to your admin CSS file */
+
+/* ✅ Notification Bell Animation */
+.animate-bell {
+  animation: adminBellRing 0.5s ease;
+}
+
+@keyframes adminBellRing {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(12deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(8deg); }
+  80% { transform: rotate(-4deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ✅ Admin Notification Badge */
+.admin-notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  font-family: monospace;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Notification Button Position */
+.notification-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #6c757d;
+}
+
+.notification-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+/* ==================== LOGOUT MODAL STYLES ==================== */
+.admin-logout-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: adminLogoutFadeIn 0.2s ease-out;
+}
+
+@keyframes adminLogoutFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.admin-logout-modal {
+    background: linear-gradient(135deg, var(--light-blue), var(--navy));
+    border-radius: 24px;
+    width: 420px;
+    max-width: 90%;
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    animation: adminLogoutSlideUp 0.3s ease-out;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes adminLogoutSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-logout-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(245, 196, 94, 0.1);
+    position: relative;
+}
+
+.admin-logout-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f87171;
+}
+
+.admin-logout-modal-header h3 {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--blue);
+    margin: 0;
+}
+
+.admin-logout-close-btn {
+    background: rgba(245, 196, 94, 0.08);
+    border: none;
+    color: var(--gray);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.admin-logout-close-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.admin-logout-modal-body {
+    padding: 24px;
+}
+
+.admin-logout-modal-body p {
+    color: #e5e7eb;
+    font-size: 14px;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+}
+
+.admin-logout-warning {
+    color: #f87171 !important;
+    font-size: 13px !important;
+    background: rgba(239, 68, 68, 0.08);
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-top: 12px !important;
+}
+
+.admin-logout-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(245, 196, 94, 0.1);
+}
+
+.admin-logout-cancel-btn {
+    padding: 10px 20px;
+    background: rgba(245, 196, 94, 0.08);
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    border-radius: 10px;
+    color: var(--blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.admin-logout-cancel-btn:hover {
+    background: rgba(245, 196, 94, 0.15);
+}
+
+.admin-logout-confirm-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    color: #f87171;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.admin-logout-confirm-btn:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.25);
+    transform: translateY(-1px);
+}
+
+.admin-logout-confirm-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.admin-logout-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(248, 113, 113, 0.3);
+    border-top-color: #f87171;
+    border-radius: 50%;
+    animation: adminLogoutSpin 0.6s linear infinite;
+}
+
+@keyframes adminLogoutSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsive for Logout Modal */
+@media (max-width: 480px) {
+    .admin-logout-modal {
+        width: 90%;
+        margin: 20px;
+    }
+    
+    .admin-logout-modal-header {
+        padding: 16px 20px;
+    }
+    
+    .admin-logout-modal-body {
+        padding: 20px;
+    }
+    
+    .admin-logout-modal-footer {
+        padding: 16px 20px;
+        flex-direction: column;
+    }
+    
+    .admin-logout-cancel-btn,
+    .admin-logout-confirm-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* frontend/src/styles/admin/AdminDashboard.css */
+
+.admin-dashboard {
+    width: 100%;
+    background: #fff !important;
+    max-width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* =========================
+   DASHBOARD HEADER
+========================= */
+
+.dashboard-header-admin {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dashboard-header-admin h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f5c45e;
+    /* color: #ffffff; */
+    margin: 0;
+    line-height: 1.2;
+}
+
+.dashboard-header-admin p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+/* =========================
+   STATS GRID
+========================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+/* =========================
+   STATS CARD
+========================= */
+
+.stats-card {
+    position: relative;
+    background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(30, 41, 59, 0.92)
+    );
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 22px;
+    padding: 22px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right,
+            rgba(255,255,255,0.08),
+            transparent 45%);
+    pointer-events: none;
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(96, 165, 250, 0.25);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(96,165,250,0.08);
+}
+
+.stats-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.stats-card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.stats-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stats-card-info h3 {
+    margin: 0;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stats-card-info p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.stats-card-change {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #10b981;
+    font-size: 0.86rem;
+    font-weight: 600;
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.15);
+    padding: 8px 12px;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+/* =========================
+   CHART SECTION
+========================= */
+
+.dashboard-charts {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    width: 100%;
+}
+
+/* =========================
+   CHART CARD
+========================= */
+
+.chart-card {
+    background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(30, 41, 59, 0.92)
+    );
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 24px;
+    padding: 10px;
+    /* min-height: 380px; */
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.18);
+    transition: all 0.25s ease;
+}
+
+.chart-card:hover {
+    border-color: rgba(96,165,250,0.18);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 14px; */
+    /* margin-bottom: 24px; */
+    flex-wrap: wrap;
+}
+
+.chart-header h3,
+.chart-card h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+/* =========================
+   PERIOD SELECTOR
+========================= */
+
+.period-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.04);
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.period-selector button {
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.period-selector button:hover {
+    color: white;
+    background: rgba(255,255,255,0.06);
+}
+
+.period-selector button.active {
+    background: linear-gradient(
+        135deg,
+        #3b82f6,
+        #2563eb
+    );
+    color: white;
+    box-shadow:
+        0 8px 18px rgba(37,99,235,0.35);
+}
+
+/* =========================
+   FOOTER CARDS
+========================= */
+
+.dashboard-footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* =========================
+   INFO CARD
+========================= */
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px;
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.95),
+        rgba(30, 41, 59, 0.9)
+    );
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    transition: all 0.25s ease;
+    box-shadow:
+        0 8px 24px rgba(0,0,0,0.18);
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(96,165,250,0.18);
+}
+
+.info-card svg {
+    flex-shrink: 0;
+    color: #60a5fa;
+    margin-top: 2px;
+}
+
+.info-card h4 {
+    margin: 0 0 6px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.info-card p {
+    margin: 0;
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 0.92rem;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 1400px) {
+    .dashboard-charts {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-header-admin h2 {
+        font-size: 1.7rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .chart-card {
+        min-height: 340px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-dashboard {
+        gap: 22px;
+    }
+
+    .dashboard-header-admin h2 {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-header-admin p {
+        font-size: 0.92rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .stats-card {
+        padding: 20px;
+    }
+
+    .stats-card-info h3 {
+        font-size: 1.7rem;
+    }
+
+    .chart-card {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-footer {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header-admin h2 {
+        font-size: 1.35rem;
+    }
+
+    .stats-card {
+        padding: 18px;
+    }
+
+    .stats-card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+    }
+
+    .stats-card-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .period-selector {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .period-selector button {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .info-card {
+        padding: 18px;
+    }
+}

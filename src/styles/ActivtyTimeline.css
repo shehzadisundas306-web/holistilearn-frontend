@@ -1,0 +1,529 @@
+/* frontend/src/components/student/dashboard/ActivityTimeline.css */
+
+:root {
+  --navy: #102E50;
+  --blue: #F5C45E;
+  --light-blue: #10375C;
+  --orange: #BE3D2A;
+  --gray: #aba8a8;
+  --dark-bg: #0A1929;
+}
+
+.activity-container-premium {
+  /* background: linear-gradient(135deg, var(--navy) 0%, var(--light-blue) 100%); */
+  padding: 1.5rem;
+}
+
+/* Header Styles */
+.timeline-header-premium {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.icon-badge-navy {
+  width: 48px;
+  height: 48px;
+  background: rgba(245, 196, 94, 0.15);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 1.5rem;
+}
+
+.text-gold-muted {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+.header-actions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.glass-pill-unread {
+  background: var(--blue);
+  color: var(--navy);
+  padding: 0.25rem 0.75rem;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.icon-btn-gold {
+  background: rgba(245, 196, 94, 0.15);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: var(--blue);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn-gold:hover {
+  background: var(--blue);
+  color: var(--navy);
+}
+
+.text-btn-gold-link {
+  background: none;
+  border: none;
+  color: var(--gray);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.text-btn-gold-link:hover {
+  color: var(--blue);
+}
+
+/* Selection Controls */
+.selection-controls-inline {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(245, 196, 94, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+}
+
+.select-all-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.select-all-label input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--blue);
+}
+
+.selection-count {
+  color: var(--blue);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.btn-danger-glass {
+  background: rgba(190, 61, 42, 0.2);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-danger-glass:hover:not(:disabled) {
+  background: var(--orange);
+  color: white;
+}
+
+.btn-danger-glass:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-close-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Timeline Viewport */
+.timeline-viewport {
+  min-height: 400px;
+}
+
+.timeline-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.spinner-gold {
+  animation: spin 1s linear infinite;
+  font-size: 2rem;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.empty-timeline {
+  text-align: center;
+  padding: 3rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: rgba(245, 196, 94, 0.3);
+  margin-bottom: 1rem;
+}
+
+.empty-timeline h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.empty-timeline p {
+  color: var(--gray);
+}
+
+/* Timeline Wrapper */
+.timeline-wrapper {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline-item-card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s;
+}
+
+.timeline-item-card.select-mode {
+  cursor: pointer;
+}
+
+.timeline-item-card.select-mode:hover {
+  background: rgba(245, 196, 94, 0.05);
+  border-radius: 12px;
+  margin: 0 -0.5rem 1rem -0.5rem;
+  padding: 0 0.5rem;
+}
+
+/* Timeline Visual */
+.timeline-visual {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--blue);
+  z-index: 2;
+  position: relative;
+}
+
+.node-connector {
+  position: absolute;
+  top: 12px;
+  bottom: -24px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--blue), rgba(245, 196, 94, 0.2));
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Selection Checkbox */
+.selection-checkbox {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.selection-checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--blue);
+}
+
+/* Activity Glass Card */
+.activity-glass-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.timeline-item-card:hover .activity-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 196, 94, 0.3);
+}
+
+.unread-glow .activity-glass-card {
+  border-left: 3px solid var(--blue);
+  background: rgba(245, 196, 94, 0.05);
+}
+
+.activity-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.activity-info {
+  flex: 1;
+}
+
+.activity-text {
+  color: white;
+  font-size: 0.9rem;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.4;
+}
+
+.activity-time {
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+.delete-hover-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.activity-glass-card:hover .delete-hover-btn {
+  opacity: 1;
+}
+
+.delete-hover-btn:hover {
+  background: rgba(190, 61, 42, 0.2);
+  color: var(--orange);
+}
+
+/* Pagination */
+.pagination-glass-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.pag-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pag-nav:hover:not(:disabled) {
+  background: var(--blue);
+  color: var(--navy);
+}
+
+.pag-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pag-info {
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+.text-gold {
+  color: var(--blue);
+}
+
+/* Modal */
+.modal-overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: rgba(1, 91, 140, 0.8); */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.premium-confirm-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--light-blue) 100%);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  border: 1px solid rgba(245, 196, 94, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.warning-icon-glow {
+  width: 60px;
+  height: 60px;
+  background: rgba(190, 61, 42, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: var(--orange);
+  font-size: 1.8rem;
+}
+
+.premium-confirm-card h4 {
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+
+.premium-confirm-card p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-secondary-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-danger-solid {
+  background: var(--orange);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger-solid:hover {
+  background: #d14c38;
+  transform: scale(1.02);
+}
+
+/* Animations */
+.animate-in {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .activity-container-premium {
+    padding: 1rem;
+  }
+  
+  .timeline-header-premium {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .timeline-item-card {
+    gap: 0.75rem;
+  }
+  
+  .activity-glass-card {
+    padding: 0.75rem;
+  }
+  
+  .activity-icon-wrap {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .activity-text {
+    font-size: 0.8rem;
+  }
+  
+  .selection-controls-inline {
+    flex-wrap: wrap;
+  }
+}

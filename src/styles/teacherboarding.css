@@ -1,0 +1,104 @@
+/* ================= TEACHER ONBOARDING ================= */
+
+.teacher-onboard-container {
+  min-height: 100vh;
+  background: url("/public/images/teacherboarding.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: "Outfit", sans-serif;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(16, 46, 80, 0.85), rgba(16, 55, 92, 0.75));
+  backdrop-filter: blur(4px);
+}
+.teacher-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(16, 55, 92, 0.8); 
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+  color: white;
+}
+.step-title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--blue) !important;
+}
+.step-indicator {
+  text-align: center;
+  margin-bottom: 25px;
+  opacity: 0.9;
+  color: white; 
+  font-size: 16px;
+  font-style: italic;
+}
+.teacher-card input,
+.teacher-card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  margin-bottom: 18px;
+  outline: none;
+  transition: 0.3s;
+}
+.teacher-card input:focus,
+.teacher-card textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(245, 196, 94, 0.2);
+}
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.next-btn,
+.prev-btn,
+.submit-btn {
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.next-btn,
+.submit-btn {
+  background: linear-gradient(90deg, var(--navy), var(--light-blue));
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.prev-btn {
+  background: var(--gray);
+  color: var(--navy);
+}
+.next-btn:hover,
+.submit-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  color: white;
+}
+.progress-wrapper {
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--light-blue), var(--blue));
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}

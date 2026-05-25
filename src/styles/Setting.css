@@ -1,0 +1,722 @@
+/* ======================================================
+   STUDENT TOP NAVIGATION HUB SCALING DESIGN SYSTEM
+   ====================================================== */
+
+.student-tnv-wrapper {
+  height: 75px;
+  width: 100%;
+  background: linear-gradient(180deg, #102E50 0%, #0d2542 100%);
+  border-bottom: 1px solid rgba(245, 196, 94, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Active Class Appended dynamically on Window Scroll Actions */
+.student-tnv-blur {
+  background: rgba(10, 25, 41, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  height: 70px;
+}
+
+/* Deck Content Flex Rails */
+.student-tnv-left-deck,
+.student-tnv-right-deck {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* --------------------------------------------------
+   1. Navigation Hyperlinks
+   -------------------------------------------------- */
+.student-tnv-nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.student-tnv-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #aba8a8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.student-tnv-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.student-tnv-icon {
+  font-size: 1rem;
+  color: #F5C45E;
+}
+
+/* --------------------------------------------------
+   2. Mobile Hamburger Trigger Button
+   -------------------------------------------------- */
+.student-tnv-burger-btn {
+  display: none; /* Hidden on desktop screens */
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.student-tnv-burger-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* --------------------------------------------------
+   3. Notification Actions (Bell Trigger Area)
+   -------------------------------------------------- */
+.student-tnv-bell-box {
+  position: relative;
+}
+
+.student-tnv-bell-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #aba8a8;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.student-tnv-bell-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 196, 94, 0.2);
+}
+
+.student-tnv-bell-icon {
+  font-size: 1.15rem;
+}
+
+/* Notification Alert Bubble Badge */
+.student-tnv-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #E53E3E;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid #0A1929;
+}
+
+.student-tnv-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------------
+   4. User Status Anchor Header Trigger Box
+   -------------------------------------------------- */
+.student-tnv-profile-shell {
+  position: relative;
+}
+
+.student-tnv-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.student-tnv-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F5C45E 0%, #e6b33e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(245, 196, 94, 0.2);
+}
+
+.student-tnv-avatar-txt {
+  color: #102E50;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.student-tnv-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-tnv-name {
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.student-tnv-role {
+  color: #aba8a8;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+.student-tnv-chevron {
+  color: #aba8a8;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+/* --------------------------------------------------
+   5. Dropdown Window Container
+   -------------------------------------------------- */
+.student-tnv-dropdown {
+  position: absolute;
+  right: 0;
+  top: 55px;
+  width: 260px;
+  background: #102E50;
+  border: 1px solid rgba(245, 196, 94, 0.15);
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.student-tnv-dd-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.student-tnv-dd-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5C45E;
+  font-weight: 700;
+  border: 1px solid rgba(245, 196, 94, 0.1);
+}
+
+.student-tnv-dd-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.student-tnv-dd-info p {
+  font-size: 0.72rem;
+  color: #aba8a8;
+  margin: 2px 0 6px 0;
+  word-break: break-all;
+}
+
+.student-tnv-dd-role-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  background: rgba(245, 196, 94, 0.12);
+  color: #F5C45E;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.student-tnv-dd-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0.5rem 0;
+}
+
+/* Action Items inside dropdown */
+.student-tnv-dd-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  color: #aba8a8;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.student-tnv-dd-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #FFFFFF;
+}
+
+.student-tnv-dd-icon {
+  font-size: 0.95rem;
+  color: #aba8a8;
+}
+
+.student-tnv-dd-logout {
+  color: #E53E3E;
+}
+.student-tnv-dd-logout:hover {
+  background: rgba(229, 62, 62, 0.08);
+  color: #E53E3E;
+}
+.student-tnv-dd-logout .student-tnv-dd-icon {
+  color: #E53E3E;
+}
+
+/* ======================================================
+   RESPONSIVE HARDWARE SCALING MEDIA QUERIES
+   ====================================================== */
+
+@media (max-width: 992px) {
+  .student-tnv-wrapper {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Bring out the mobile burger menu toggle */
+  .student-tnv-burger-btn {
+    display: flex;
+  }
+
+  /* Clear secondary text links to focus on clean workspace layouts */
+  .student-tnv-link span {
+    display: none;
+  }
+  
+  .student-tnv-link {
+    padding: 0.5rem;
+  }
+
+  .student-tnv-user-details,
+  .student-tnv-chevron {
+    display: none; /* Keeps profile view ultra-compact on mobile cards */
+  }
+}
+
+/* Hardware-Accelerated Bell Ring Keyframe Pulse Animation */
+.student-tnv-bell-ring {
+  animation: studentBellRingToggle 0.8s ease;
+}
+
+@keyframes studentBellRingToggle {
+  0% { transform: scale(1); }
+  15% { transform: rotate(15deg) scale(1.1); }
+  30% { transform: rotate(-15deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ==========================================================================
+   HOLISTILEARN GLOBAL MODAL LAYOUT ARCHITECTURE
+   ========================================================================== */
+
+/* Overrides default Bootstrap modal spacing issues and forces vertical centering */
+.hl-custom-modal-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(4, 11, 20, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+.hl-custom-modal-container .modal-dialog {
+  margin: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  min-height: calc(100% - 3.5rem) !important;
+  width: 100% !important;
+  max-width: 650px; /* Base profile scale width */
+}
+
+/* Expands horizontal scale limits specifically for configuration tabs */
+.hl-custom-modal-container .modal-dialog:has(.hl-settings-modal) {
+  max-width: 780px !important;
+}
+
+/* Modals Body Base Frame setup (Glassmorphism Core) */
+.hl-profile-modal,
+.hl-settings-modal {
+  background: #0d1e33 !important;
+  border: 1px solid rgba(245, 196, 94, 0.18) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  animation: hlModalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hlModalSlideUp {
+  from { opacity: 0; transform: translateY(15px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   HEADER & INNER COMPONENT CONTAINERS
+   -------------------------------------------------------------------------- */
+.hl-modal-header {
+  background: #11253d !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding: 1.25rem 1.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.hl-modal-title {
+  color: #ffffff !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
+.hl-modal-close-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.hl-modal-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.hl-modal-body {
+  background: #0d1e33 !important;
+  color: #e2e8f0 !important;
+  padding: 1.75rem !important;
+}
+
+/* --------------------------------------------------------------------------
+   PROFILE SPECIFIC CONTAINER SUB-ELEMENTS
+   -------------------------------------------------------------------------- */
+.hl-profile-avatar-large {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5c45e 0%, #d89e24 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 24px rgba(216, 158, 36, 0.25);
+}
+
+.hl-profile-avatar-large span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0d1e33;
+}
+
+.hl-profile-role-badge {
+  display: inline-block;
+  background: rgba(245, 196, 94, 0.12);
+  color: #f5c45e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(245, 196, 94, 0.15);
+  margin-top: 6px;
+}
+
+/* View Fields Structuring Layout */
+.hl-profile-info-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.hl-info-card {
+  background: #11253d;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+}
+
+.hl-info-card label, 
+.hl-input-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f5c45e;
+  text-uppercase: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.hl-info-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+/* Form inputs styling */
+.hl-input-field {
+  background: #11253d !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 0.65rem 1rem !important;
+}
+
+.hl-input-field:focus {
+  border-color: #f5c45e !important;
+  box-shadow: 0 0 0 3px rgba(245, 196, 94, 0.15) !important;
+}
+
+.hl-input-disabled {
+  background: rgba(17, 37, 61, 0.5) !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  border-style: dashed !important;
+}
+
+/* --------------------------------------------------------------------------
+   SETTINGS MODULE TAB COMPONENT MANAGEMENT
+   ========================================================================== */
+.hl-tabs-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: #11253d;
+}
+
+.hl-tabs-nav .nav-link {
+  color: rgba(255, 255, 255, 0.6) !important;
+  border: none !important;
+  padding: 1rem !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.hl-tabs-nav .nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.hl-tabs-nav .nav-item.show .nav-link, 
+.hl-tabs-nav .nav-link.active {
+  color: #f5c45e !important;
+  background: #0d1e33 !important;
+  border-bottom: 3px solid #f5c45e !important;
+  font-weight: 600;
+}
+
+.hl-setting-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hl-setting-card:last-of-type {
+  border-bottom: none;
+}
+
+.hl-setting-text h6 {
+  margin: 0 0 3px 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.hl-setting-text p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Form Dropdowns & Toggle Switch Customizing rules */
+.hl-dropdown-control {
+  background: #11253d !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 0.65rem 1rem !important;
+}
+
+.hl-toggle-switch .form-check-input {
+  cursor: pointer;
+  width: 2.6em !important;
+  height: 1.4em !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: transparent !important;
+}
+
+.hl-toggle-switch .form-check-input:checked {
+  background-color: #f5c45e !important;
+  border-color: #f5c45e !important;
+}
+
+/* Appearance Matrix Buttons Grid Layout */
+.hl-theme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.hl-theme-btn {
+  background: #11253d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hl-theme-btn svg {
+  font-size: 1.25rem;
+}
+
+.hl-theme-btn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+.hl-theme-btn.active {
+  background: rgba(245, 196, 94, 0.08);
+  border-color: #f5c45e;
+  color: #f5c45e;
+  box-shadow: 0 4px 15px rgba(245, 196, 94, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER FRAME ACTIONS
+   -------------------------------------------------------------------------- */
+.hl-modal-footer {
+  background: #11253d !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding: 1.1rem 1.75rem !important;
+  display: flex !important;
+  gap: 0.75rem;
+}
+
+.hl-btn {
+  padding: 0.55rem 1.5rem !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.hl-btn-secondary {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.hl-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.hl-btn-warning {
+  background: #f5c45e !important;
+  border: 1px solid #f5c45e !important;
+  color: #0a1929 !important;
+}
+
+.hl-btn-warning:hover {
+  background: #e6b33e !important;
+  box-shadow: 0 4px 15px rgba(245, 196, 94, 0.2);
+}
+
+.hl-btn-success {
+  background: #10b981 !important;
+  border: 1px solid #10b981 !important;
+  color: #ffffff !important;
+}
+
+/* Micro animations helpers */
+.hl-spinner {
+  animation: hlRotate 1s linear infinite;
+}
+
+.hl-gear-spin {
+  animation: hlRotate 12s linear infinite;
+}
+
+@keyframes hlRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .hl-profile-info-view {
+    grid-template-columns: 1fr;
+  }
+  .hl-theme-grid {
+    grid-template-columns: 1fr;
+  }
+  .hl-modal-footer {
+    flex-direction: column-reverse;
+  }
+  .hl-modal-footer .hl-btn {
+    width: 100%;
+  }
+}

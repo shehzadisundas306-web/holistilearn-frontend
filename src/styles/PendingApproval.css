@@ -1,0 +1,182 @@
+/* frontend/src/styles/teacher/PendingApproval.css */
+
+.pending-approval-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--navy) 100%);
+    padding: 20px;
+}
+
+.pending-approval-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(245, 196, 94, 0.1);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.pending-approval-card.approved {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.pending-approval-card.rejected {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pending-icon {
+    width: 100px;
+    height: 100px;
+    background: rgba(245, 196, 94, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--blue);
+}
+
+.pending-icon.approved {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.pending-icon.rejected {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.pending-approval-card h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 16px;
+}
+
+.pending-message {
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.info-box {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid #10b981;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.info-box svg {
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+.info-box p {
+    color: var(--gray);
+    font-size: 14px;
+    margin: 0;
+}
+
+.rejection-box {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid #ef4444;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.rejection-box strong {
+    color: #ef4444;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.rejection-box p {
+    color: var(--gray);
+    font-size: 14px;
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.back-btn, .dashboard-btn, .edit-btn, .logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.back-btn {
+    background: rgba(245, 196, 94, 0.1);
+    border: 1px solid rgba(245, 196, 94, 0.2);
+    color: var(--blue);
+}
+
+.back-btn:hover {
+    background: rgba(245, 196, 94, 0.2);
+    transform: translateY(-2px);
+}
+
+.dashboard-btn {
+    background: #10b981;
+    border: none;
+    color: white;
+}
+
+.dashboard-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.edit-btn {
+    background: var(--blue);
+    border: none;
+    color: var(--navy);
+}
+
+.edit-btn:hover {
+    background: #e5a94d;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    transform: translateY(-2px);
+}

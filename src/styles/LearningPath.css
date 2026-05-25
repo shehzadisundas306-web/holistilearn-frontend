@@ -1,0 +1,2093 @@
+/* frontend/src/styles/LearningPath.css */
+
+:root {
+  --navy: #102E50;
+  --blue: #F5C45E;      
+  --light-blue: #10375C;
+  --orange: #BE3D2A;    
+  --gray: #aba8a8;
+  --dark: #0a1a2e;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+}
+
+/* ========================================
+   MAIN WRAPPER
+   ======================================== */
+.learning-path-wrapper {
+  min-height: 100vh;
+  /* background: linear-gradient(135deg, var(--navy) 0%, var(--dark) 100%); */
+  padding: 1rem;
+  /* margin-top: 40px; */
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+}
+
+.loading-container p {
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+.spinner {
+  font-size: 3rem;
+  color: var(--blue);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   HEADER SECTION
+   ======================================== */
+.path-header {
+  background: rgba(16, 46, 80, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header-info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-info p {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.refresh-btn, .path-history-btn, .discover-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+}
+
+.refresh-btn {
+  background: rgba(245, 196, 94, 0.1);
+  color: var(--blue);
+  border: 1px solid rgba(245, 196, 94, 0.3);
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: rgba(245, 196, 94, 0.2);
+  transform: translateY(-2px);
+}
+
+.path-history-btn {
+  background: rgba(245, 196, 94, 0.1);
+  color: var(--blue);
+  border: 1px solid rgba(245, 196, 94, 0.3);
+}
+
+.path-history-btn:hover {
+  background: rgba(245, 196, 94, 0.2);
+  transform: translateY(-2px);
+}
+
+.discover-btn {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: white;
+}
+
+.discover-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+.path-stats {
+  display: flex;
+  gap: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.stat-pill {
+  background: rgba(16, 46, 80, 0.8);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.gold-icon {
+  color: var(--blue);
+}
+
+/* ========================================
+   XP PROGRESS BAR
+   ======================================== */
+.xp-progress-container {
+  background: rgba(16, 46, 80, 0.8);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.xp-progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.xp-progress-track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.xp-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.xp-next {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+.empty-path-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(16, 46, 80, 0.6);
+  border-radius: 20px;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+
+.empty-path-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-path-state p {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+.start-journey-btn {
+  background: linear-gradient(135deg, var(--blue), #d4a83e);
+  color: var(--navy);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.start-journey-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(245, 196, 94, 0.4);
+}
+
+.empty-state-tips {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 196, 94, 0.2);
+}
+
+.empty-state-tips h4 {
+  margin-bottom: 1rem;
+  color: var(--blue);
+}
+
+.topic-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.suggestion-tag {
+  background: rgba(245, 196, 94, 0.1);
+  border: 1px solid rgba(245, 196, 94, 0.3);
+  color: var(--blue);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.suggestion-tag:hover {
+  background: rgba(245, 196, 94, 0.2);
+  transform: scale(1.05);
+}
+
+/* ========================================
+   OVERALL PROGRESS
+   ======================================== */
+.overall-progress {
+  margin-bottom: 2rem;
+  background: rgba(16, 46, 80, 0.6);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.progress-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  border-radius: 10px;
+  transition: width 1s ease;
+}
+
+/* ========================================
+   ROADMAP CONTAINER
+   ======================================== */
+.roadmap-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.roadmap-step {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.connecting-line {
+  position: absolute;
+  left: 24px;
+  top: 70px;
+  width: 2px;
+  height: calc(100% + 1.5rem);
+  background: linear-gradient(180deg, var(--blue), transparent);
+  z-index: 0;
+}
+
+.step-indicator {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border-width: 2px;
+  border-style: solid;
+  transition: all 0.3s ease;
+  background: var(--navy);
+}
+
+.step-card-glass {
+  flex: 1;
+  background: rgba(16, 46, 80, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.2rem;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.step-card-glass:hover {
+  transform: translateX(5px);
+  border-color: rgba(245, 196, 94, 0.5);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.step-tag {
+  background: var(--blue);
+  color: var(--navy);
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.duration-tag {
+  color: var(--gray);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.card-main {
+  margin-bottom: 1rem;
+}
+
+.card-main h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--blue);
+}
+
+.card-main p {
+  color: var(--gray);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* ========================================
+   TOPICS LIST
+   ======================================== */
+.topics-list {
+  margin: 1rem 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 0.8rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.topics-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.topics-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--gray);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(245, 196, 94, 0.2);
+  position: sticky;
+  top: 0;
+  background: rgba(16, 46, 80, 0.9);
+}
+
+.topic-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
+  margin: 0.3rem 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.topic-item:hover {
+  background: rgba(245, 196, 94, 0.1);
+}
+
+.topic-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================================================
+   ROOT CAUSE FIX
+   =========================================================
+   The issue is caused by this element:
+
+   <div className="topic-status-icon pending" />
+
+   A <div> inside a flex row behaves as a block element and can
+   stretch unexpectedly, squeezing the title into a very narrow
+   width. That is why the title appears one character per line.
+
+   Use a <span> instead, or force the icon container size.
+*/
+
+/* Force icon to fixed size */
+.topic-status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px; /* fixed width, no shrinking */
+}
+
+/* Pending circle */
+.topic-status-icon.pending {
+  border-radius: 50%;
+  background: rgba(245, 196, 94, 0.7);
+}
+
+/* Title wrapper */
+.topic-title-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  width: 100% !important;
+}
+
+/* Title text */
+.topic-title {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+
+
+.topic-status-icon.completed {
+  color: var(--success);
+}
+
+.topic-status-icon.in-progress {
+  color: var(--blue);
+}
+
+
+
+
+
+.topic-time {
+  font-size: 0.7rem;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.complete-topic-btn {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--success);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.complete-topic-btn:hover:not(:disabled) {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+.complete-topic-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.topic-completed-badge {
+  color: var(--success);
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.spinner-small {
+  animation: spin 0.5s linear infinite;
+}
+
+/* ========================================
+   STEP PROGRESS
+   ======================================== */
+.step-progress {
+  margin: 1rem 0 0.5rem;
+}
+
+.progress-bar-small {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.progress-fill-small {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+/* ========================================
+   SKILLS SECTION
+   ======================================== */
+.card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+}
+
+.skill-chip {
+  background: rgba(245, 196, 94, 0.1);
+  border: 1px solid rgba(245, 196, 94, 0.3);
+  color: var(--blue);
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.continue-btn, .review-btn {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  margin-top: 0.8rem;
+}
+
+.continue-btn {
+  background: linear-gradient(135deg, var(--blue), #d4a83e);
+  color: var(--navy);
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(245, 196, 94, 0.4);
+}
+
+.review-btn {
+  background: rgba(245, 196, 94, 0.1);
+  border: 1px solid rgba(245, 196, 94, 0.3);
+  color: var(--blue);
+}
+
+.review-btn:hover {
+  background: rgba(245, 196, 94, 0.2);
+}
+
+/* ========================================
+   PATH SELECTOR MODAL
+   ======================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: rgba(0, 0, 0, 0.85); */
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.path-selector-modal {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--dark) 100%);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 650px;
+  max-height: 85vh;
+  overflow: hidden;
+  border: 1px solid rgba(245, 196, 94, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(245, 196, 94, 0.2);
+  background: rgba(16, 46, 80, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.modal-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.modal-icon {
+  color: var(--blue);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: var(--gray);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0.3rem;
+}
+
+.close-modal:hover {
+  color: var(--orange);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 10px;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(245, 196, 94, 0.2);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  background: rgba(16, 46, 80, 0.95);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+/* Path Items */
+.all-paths-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.all-paths-list h4 {
+  margin-bottom: 0.5rem;
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.path-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(245, 196, 94, 0.2);
+  transition: all 0.2s ease;
+}
+
+.path-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 196, 94, 0.4);
+}
+
+.path-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.path-header h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--blue);
+}
+
+.status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.status-badge.in_progress,
+.status-badge.active {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.status-badge.paused {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--warning);
+}
+
+.status-badge.completed {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--info);
+}
+
+.path-progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.path-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.path-meta {
+  font-size: 0.7rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.path-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.path-actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+}
+
+.pause-path-btn {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--warning);
+}
+
+.pause-path-btn:hover {
+  background: rgba(245, 158, 11, 0.3);
+}
+
+.resume-path-btn {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.resume-path-btn:hover {
+  background: rgba(16, 185, 129, 0.3);
+}
+
+.view-path-btn {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--info);
+}
+
+.view-path-btn:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.delete-path-btn {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--danger);
+}
+
+.delete-path-btn:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.empty-paths {
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.empty-subtitle {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+
+.discover-from-modal-btn, .btn-discover {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.discover-from-modal-btn:hover, .btn-discover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Review Modal */
+.review-modal {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--dark) 100%);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 750px;
+  max-height: 85vh;
+  overflow: hidden;
+  border: 1px solid rgba(245, 196, 94, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.review-description {
+  color: var(--gray);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.review-stats {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.review-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.review-stat span {
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+.review-stat strong {
+  font-size: 1rem;
+  color: white;
+}
+
+.status-completed {
+  color: var(--success);
+}
+
+.status-in-progress {
+  color: var(--blue);
+}
+
+.review-topics h4,
+.review-quizzes h4 {
+  margin: 1.5rem 0 1rem;
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.topics-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.review-topic-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 0.8rem;
+  border-left: 3px solid;
+}
+
+.review-topic-card.completed {
+  border-left-color: var(--success);
+}
+
+.review-topic-card.pending {
+  border-left-color: var(--gray) !important;
+}
+
+.topic-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.completed-icon {
+  color: var(--success);
+  font-size: 0.9rem;
+}
+
+.pending-icon {
+  color: var(--gray) !important;
+  font-size: 0.9rem !important;
+}
+
+.topic-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.topic-details {
+  margin-left: 1.5rem;
+  font-size: 0.7rem;
+  color: var(--gray);
+}
+
+.topic-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.skill-tag {
+  background: rgba(245, 196, 94, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.65rem;
+  color: var(--blue);
+}
+
+.quiz-review-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quiz-score {
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+}
+
+.quiz-score.passed {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.quiz-score.failed {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--danger);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue), #d4a83e);
+  color: var(--navy);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(245, 196, 94, 0.4);
+}
+
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.roadmap-step {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ========================================
+   SCROLLBAR STYLES
+   ======================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a83e;
+}
+
+/* ========================================
+   LEARNING PATH - RESPONSIVENESS
+   ======================================== */
+
+/* Extra Large Desktop (1400px and above) */
+@media (min-width: 1400px) {
+  .learning-path-wrapper {
+    padding: 2rem;
+  }
+  
+  .path-header {
+    padding: 1.8rem 2.5rem;
+  }
+  
+  .header-info h2 {
+    font-size: 2rem;
+  }
+  
+  .roadmap-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .step-card-glass {
+    padding: 1.5rem;
+  }
+  
+  .card-main h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Large Desktop (1200px - 1399px) */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .learning-path-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .path-header {
+    padding: 1.3rem 1.8rem;
+  }
+  
+  .header-info h2 {
+    font-size: 1.7rem;
+  }
+}
+
+/* Desktop (1024px - 1199px) */
+@media (max-width: 1199px) {
+  .learning-path-wrapper {
+    padding: 1.2rem;
+  }
+  
+  .path-header {
+    padding: 1.2rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .path-stats {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    justify-content: flex-start;
+  }
+  
+  .header-info h2 {
+    font-size: 1.5rem;
+  }
+  
+  .roadmap-step {
+    gap: 1rem;
+  }
+  
+  .icon-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+  
+  .connecting-line {
+    left: 21px;
+  }
+  
+  .step-card-glass {
+    padding: 1rem;
+  }
+  
+  .card-main h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet Landscape (992px - 1023px) */
+@media (max-width: 1023px) {
+  .learning-path-wrapper {
+    padding: 1rem;
+  }
+  
+  .path-header {
+    padding: 1rem 1.2rem;
+  }
+  
+  .header-info h2 {
+    font-size: 1.3rem;
+  }
+  
+  .header-info p {
+    font-size: 0.8rem;
+  }
+  
+  .refresh-btn, 
+  .path-history-btn, 
+  .discover-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .stat-pill {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .xp-progress-container {
+    padding: 0.8rem 1rem;
+  }
+  
+  .roadmap-step {
+    gap: 0.8rem;
+  }
+  
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  .connecting-line {
+    left: 18px;
+    top: 60px;
+  }
+  
+  .step-card-glass {
+    padding: 0.9rem;
+  }
+  
+  .card-main h3 {
+    font-size: 1rem;
+  }
+  
+  .card-main p {
+    font-size: 0.8rem;
+  }
+  
+  .step-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+  }
+  
+  .duration-tag {
+    font-size: 0.7rem;
+  }
+  
+  .topic-item {
+    padding: 0.5rem;
+  }
+  
+  .topic-title {
+    font-size: 0.8rem;
+  }
+  
+  .topic-time {
+    font-size: 0.65rem;
+  }
+  
+  .complete-topic-btn {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+  }
+  
+  .continue-btn, 
+  .review-btn {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet Portrait (768px - 991px) */
+@media (max-width: 991px) {
+  .learning-path-wrapper {
+    padding: 0.8rem;
+  }
+  
+  .path-header {
+    padding: 1rem;
+  }
+  
+  .header-info h2 {
+    font-size: 1.2rem;
+  }
+  
+  .header-actions {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .refresh-btn, 
+  .path-history-btn, 
+  .discover-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .path-stats {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .roadmap-step {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .connecting-line {
+    display: none;
+  }
+  
+  .step-indicator {
+    align-self: flex-start;
+  }
+  
+  .icon-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+  
+  .step-card-glass:hover {
+    transform: translateX(0);
+  }
+  
+  .topics-list {
+    max-height: 250px;
+  }
+  
+  .topic-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .topic-info {
+    width: 100%;
+  }
+  
+  .complete-topic-btn {
+    align-self: flex-end;
+  }
+  
+  .topic-completed-badge {
+    align-self: flex-end;
+  }
+  
+  .path-actions {
+    flex-direction: column;
+  }
+  
+  .path-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .review-modal,
+  .path-selector-modal {
+    max-width: 90%;
+    margin: 1rem;
+  }
+}
+
+/* Mobile Landscape (576px - 767px) */
+@media (max-width: 767px) {
+  .learning-path-wrapper {
+    padding: 0.6rem;
+  }
+  
+  .path-header {
+    padding: 0.8rem;
+  }
+  
+  .header-info h2 {
+    font-size: 1.1rem;
+  }
+  
+  .header-info p {
+    font-size: 0.75rem;
+  }
+  
+  .refresh-btn, 
+  .path-history-btn, 
+  .discover-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .stat-pill {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .xp-progress-container {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .xp-progress-info {
+    font-size: 0.8rem;
+  }
+  
+  .overall-progress {
+    padding: 0.8rem 1rem;
+  }
+  
+  .progress-label {
+    font-size: 0.8rem;
+  }
+  
+  .roadmap-container {
+    gap: 1rem;
+  }
+  
+  .step-card-glass {
+    padding: 0.8rem;
+  }
+  
+  .card-top {
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-main h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .card-main p {
+    font-size: 0.75rem;
+  }
+  
+  .topics-list {
+    padding: 0.5rem;
+    max-height: 200px;
+  }
+  
+  .topics-header {
+    font-size: 0.65rem;
+  }
+  
+  .topic-title-wrapper {
+    gap: 0.3rem;
+  }
+  
+  .topic-title {
+    font-size: 0.75rem;
+  }
+  
+  .topic-time {
+    font-size: 0.6rem;
+  }
+  
+  .complete-topic-btn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.6rem;
+  }
+  
+  .topic-completed-badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .step-progress {
+    margin: 0.5rem 0;
+  }
+  
+  .progress-text {
+    font-size: 0.65rem;
+  }
+  
+  .skill-chip {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  
+  .continue-btn, 
+  .review-btn {
+    padding: 0.4rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  
+  .empty-path-state {
+    padding: 2rem 1rem;
+  }
+  
+  .empty-state-icon {
+    font-size: 3rem;
+  }
+  
+  .empty-path-state h3 {
+    font-size: 1.2rem;
+  }
+  
+  .empty-path-state p {
+    font-size: 0.8rem;
+  }
+  
+  .start-journey-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .topic-suggestions {
+    gap: 0.5rem;
+  }
+  
+  .suggestion-tag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Mobile Portrait (320px - 575px) */
+@media (max-width: 575px) {
+  .learning-path-wrapper {
+    padding: 0.5rem;
+  }
+  
+  .path-header {
+    padding: 0.7rem;
+  }
+  
+  .header-info h2 {
+    font-size: 1rem;
+  }
+  
+  .header-info p {
+    font-size: 0.7rem;
+  }
+  
+  .refresh-btn, 
+  .path-history-btn, 
+  .discover-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .stat-pill {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
+  }
+  
+  .xp-progress-info {
+    font-size: 0.7rem;
+  }
+  
+  .xp-next {
+    font-size: 0.65rem;
+  }
+  
+  .overall-progress {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .progress-label {
+    font-size: 0.75rem;
+  }
+  
+  .step-indicator {
+    align-self: center;
+  }
+  
+  .icon-circle {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .step-card-glass {
+    padding: 0.7rem;
+  }
+  
+  .step-tag {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.5rem;
+  }
+  
+  .duration-tag {
+    font-size: 0.65rem;
+  }
+  
+  .card-main h3 {
+    font-size: 0.9rem;
+  }
+  
+  .card-main p {
+    font-size: 0.7rem;
+  }
+  
+  .topics-list {
+    padding: 0.4rem;
+    max-height: 180px;
+  }
+  
+  .topics-header {
+    font-size: 0.6rem;
+  }
+  
+  .topic-status-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+  }
+  
+  .topic-title {
+    font-size: 0.7rem;
+  }
+  
+  .topic-time {
+    font-size: 0.55rem;
+  }
+  
+  .complete-topic-btn {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.55rem;
+  }
+  
+  .topic-completed-badge {
+    font-size: 0.55rem;
+    padding: 0.15rem 0.4rem;
+  }
+  
+  .progress-text {
+    font-size: 0.6rem;
+  }
+  
+  .skill-chip {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.6rem;
+  }
+  
+  .continue-btn, 
+  .review-btn {
+    padding: 0.35rem;
+    font-size: 0.7rem;
+  }
+  
+  .empty-path-state {
+    padding: 1.5rem;
+  }
+  
+  .empty-state-icon {
+    font-size: 2.5rem;
+  }
+  
+  .empty-path-state h3 {
+    font-size: 1rem;
+  }
+  
+  .empty-path-state p {
+    font-size: 0.7rem;
+  }
+  
+  .start-journey-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .topic-suggestions {
+    gap: 0.4rem;
+  }
+  
+  .suggestion-tag {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+  }
+  
+  /* Modal adjustments */
+  .modal-header h3 {
+    font-size: 1rem;
+  }
+  
+  .modal-body {
+    padding: 0.8rem;
+  }
+  
+  .path-item {
+    padding: 0.8rem;
+  }
+  
+  .path-header h5 {
+    font-size: 0.9rem;
+  }
+  
+  .status-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.5rem;
+  }
+  
+  .path-meta {
+    font-size: 0.6rem;
+  }
+  
+  .path-actions button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+  }
+  
+  .review-stats {
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+  
+  .review-stat strong {
+    font-size: 0.9rem;
+  }
+  
+  .review-topics h4,
+  .review-quizzes h4 {
+    font-size: 0.9rem;
+  }
+  
+  .topic-header {
+    flex-wrap: wrap;
+  }
+  
+  .topic-details {
+    margin-left: 1rem;
+  }
+  
+  .btn-secondary,
+  .btn-primary {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Extra Small Devices (up to 360px) */
+@media (max-width: 360px) {
+  .learning-path-wrapper {
+    padding: 0.3rem;
+  }
+  
+  .path-header {
+    padding: 0.5rem;
+  }
+  
+  .header-info h2 {
+    font-size: 0.9rem;
+  }
+  
+  .header-info p {
+    font-size: 0.65rem;
+  }
+  
+  .stat-pill {
+    font-size: 0.55rem;
+  }
+  
+  .refresh-btn, 
+  .path-history-btn, 
+  .discover-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  
+  .icon-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+  
+  .step-card-glass {
+    padding: 0.6rem;
+  }
+  
+  .card-main h3 {
+    font-size: 0.85rem;
+  }
+  
+  .topic-title {
+    font-size: 0.65rem;
+  }
+  
+  .topic-time {
+    font-size: 0.5rem;
+  }
+  
+  .complete-topic-btn {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.5rem;
+  }
+  
+  .topic-completed-badge {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.3rem;
+  }
+  
+  .path-header h5 {
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .learning-path-wrapper {
+    padding: 0.5rem;
+  }
+  
+  .roadmap-step {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+  
+  .connecting-line {
+    display: block;
+    left: 18px;
+    top: 55px;
+  }
+  
+  .topic-item {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .topic-info {
+    width: auto;
+    flex: 1;
+  }
+  
+  .complete-topic-btn {
+    align-self: center;
+  }
+  
+  .topics-list {
+    max-height: 180px;
+  }
+  
+  .path-actions {
+    flex-direction: row;
+  }
+  
+  .path-actions button {
+    width: auto;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .learning-path-wrapper {
+    padding: 0;
+    background: white;
+  }
+  
+  .path-header,
+  .xp-progress-container,
+  .overall-progress,
+  .header-actions,
+  .path-stats,
+  .continue-btn,
+  .review-btn,
+  .complete-topic-btn,
+  .modal-overlay,
+  .refresh-btn,
+  .path-history-btn,
+  .discover-btn {
+    display: none !important;
+  }
+  
+  .roadmap-step {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .step-card-glass {
+    border: 1px solid #ddd;
+    background: white;
+    color: black;
+  }
+  
+  .card-main h3,
+  .card-main p,
+  .topic-title {
+    color: black !important;
+  }
+  
+  .step-tag {
+    background: #f0f0f0;
+    color: black;
+  }
+  
+  .topic-status-icon.completed {
+    color: green;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .step-card-glass,
+  .step-card-glass:hover,
+  .continue-btn,
+  .review-btn,
+  .complete-topic-btn,
+  .refresh-btn,
+  .path-history-btn,
+  .discover-btn {
+    transition: none;
+  }
+  
+  .step-card-glass:hover {
+    transform: none;
+  }
+  
+  .continue-btn:hover,
+  .review-btn:hover {
+    transform: none;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(0deg); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 1; }
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .step-card-glass,
+  .path-header,
+  .xp-progress-container,
+  .overall-progress {
+    border: 2px solid white;
+  }
+  
+  .step-tag {
+    background: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .topic-item {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .complete-topic-btn {
+    border: 1px solid white;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .step-card-glass,
+  .continue-btn,
+  .review-btn,
+  .complete-topic-btn,
+  .refresh-btn,
+  .path-history-btn,
+  .discover-btn,
+  .suggestion-tag {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .step-card-glass:active {
+    transform: scale(0.99);
+  }
+  
+  .continue-btn:active,
+  .review-btn:active {
+    transform: scale(0.98);
+  }
+  
+  .complete-topic-btn:active {
+    transform: scale(0.97);
+  }
+  
+  .suggestion-tag:active {
+    transform: scale(0.98);
+  }
+}

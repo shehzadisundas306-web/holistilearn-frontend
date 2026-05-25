@@ -1,0 +1,172 @@
+:root {
+  --navy: #102E50;
+  --blue: #F5C45E;      
+  --light-blue: #10375C;
+  --orange: #BE3D2A;    
+  --gray: #aba8a8;
+}
+
+
+/* Global scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--navy);
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+h1 {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+
+  background: linear-gradient(
+    90deg,
+    var(--gray),
+    var(--light-blue),
+    var(--blue)  
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===============================
+   FINAL PROFESSIONAL FOOTER
+================================ */
+
+.footer {
+  position: relative;
+  background: linear-gradient(135deg, var(--navy), var(--light-blue));
+  color: white;
+  padding-top: 60px; 
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+/* ===== CONTAINER ===== */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 20px 40px;
+}
+/* ===== GRID ===== */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+/* ===== HEADINGS ===== */
+.footer h4 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, var(--blue), #ffffff);
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* ===== TEXT ===== */
+.footer p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.7;
+}
+/* ===== LISTS ===== */
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+.footer ul li {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--gray);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.footer ul li:hover {
+  color: var(--blue);
+  transform: translateX(5px);
+}
+/* ===== NEWSLETTER ===== */
+.newsletter-box {
+  display: flex;
+  margin-top: 20px;
+  background: rgba(16, 46, 80, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.newsletter-box input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+.newsletter-box input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.newsletter-box button {
+  padding: 12px 20px;
+  border: none;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.newsletter-box button:hover {
+  filter: brightness(1.1);
+  box-shadow: -5px 0 15px rgba(190, 61, 42, 0.3);
+}
+/* ===== DIVIDER ===== */
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  margin: 50px 0 30px;
+}
+/* ===== BOTTOM ===== */
+.footer-bottom {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(171, 168, 168, 0.6);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

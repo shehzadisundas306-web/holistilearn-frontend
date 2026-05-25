@@ -1,0 +1,112 @@
+/* ================= ROLE SELECTION ================= */
+
+.role-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy), var(--light-blue));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  font-family: "Outfit", sans-serif;
+}
+.role-card-wrapper {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+.role-title {
+  font-size: 36px;
+  margin-bottom: 10px;
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    var(--blue) 
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.role-subtitle {
+  margin-bottom: 40px;
+  opacity: 0.9;
+  color: white; 
+  font-style: italic;
+  font-weight: 300;
+}
+.role-options {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.role-card {
+  flex: 1;
+  min-width: 260px;
+  max-width: 350px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.role-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+.role-card.active {
+  border: 2px solid var(--blue);
+  box-shadow: 0 0 25px rgba(245, 196, 94, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+}
+.role-icon {
+  font-size: 70px !important;
+  margin-bottom: 15px;
+}
+.icons1 {
+  font-size: 3.50rem !important;
+  color: var(--blue);
+}
+.role-card h2 {
+  margin-bottom: 10px;
+  color: white;
+}
+.role-card p {
+  font-size: 14px;
+  opacity: 0.8;
+  color: #e0e0e0;
+}
+.role-continue-btn {
+  margin-top: 40px;
+  padding: 12px 60px; 
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    var(--light-blue),
+    var(--blue)
+  );
+  color: white;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.role-continue-btn:disabled {
+  background: var(--gray);
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.role-continue-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: linear-gradient(
+    90deg,
+    var(--blue),
+    var(--orange)
+  );
+  box-shadow: 0 10px 20px rgba(190, 61, 42, 0.3);
+}
