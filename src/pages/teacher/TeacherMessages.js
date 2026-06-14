@@ -400,7 +400,7 @@ useEffect(() => {
     console.log(`🔄 Loading messages for chat: ${chatId} (Attempt: ${currentAttempt})`);
     
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
       const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
       
       // Try multiple endpoints

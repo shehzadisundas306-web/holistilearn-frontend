@@ -53,7 +53,7 @@ const AssignmentCard = ({ assignment, onViewSubmissions, onDelete }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   
   // ✅ Get backend URL from environment
-  const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+  const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
   
   // ✅ Fix: Get full file URL
   const getFullFileUrl = (url) => {
@@ -245,7 +245,7 @@ const TeacherClassDetails = () => {
   });
 
   // ✅ Get backend URL
-  const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+  const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
 
   // ✅ Auto-refresh every 30 seconds
   useEffect(() => {

@@ -280,7 +280,7 @@ const StudentClassDetails = () => {
         }
 
         try {
-            const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+            const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
             
             const response = await fetch(`${API_BASE}/api/chat/rooms/user/${classData.teacher.id}`, {
                 method: 'POST',
@@ -344,7 +344,7 @@ const StudentClassDetails = () => {
         }
 
         try {
-            const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+            const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
             
             const response = await fetch(`${API_BASE}/api/chat/rooms/user/${classmateId}`, {
                 method: 'POST',

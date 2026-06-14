@@ -87,7 +87,7 @@ const TeacherQuizManager = () => {
   const fetchQuizForEdit = async (id) => {
     setLoading(true);
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
       const res = await fetch(`${API_BASE}/api/quizzes/${id}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -127,7 +127,7 @@ const TeacherQuizManager = () => {
   const fetchResults = async (id) => {
     setLoading(true);
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
       const res = await fetch(`${API_BASE}/api/quizzes/${id}/results/teacher`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -179,8 +179,8 @@ const TeacherQuizManager = () => {
     };
 
     const url = isCopy
-      ? `${process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/'}/api/quizzes/${quizId}/copy`
-      : `${process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/'}/api/quizzes/${quizId}`;
+      ? `${process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app'}/api/quizzes/${quizId}/copy`
+      : `${process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app'}/api/quizzes/${quizId}`;
     const method = isCopy ? 'POST' : 'PUT';
 
     try {
@@ -212,7 +212,7 @@ const TeacherQuizManager = () => {
     setLoading(true);
     setError(null);
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
       const response = await fetch(`${API_BASE}/api/quizzes/teacher`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -241,7 +241,7 @@ const handleAIGenerate = async () => {
   const toastId = toast.loading('AI is generating your quiz questions...');
   
   try {
-    const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+    const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
     const response = await fetch(`${API_BASE}/api/ai/teacher/generate-quiz`, {
       method: 'POST',
       headers: { 
@@ -395,7 +395,7 @@ const handleAIGenerate = async () => {
       }))
     };
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
       const response = await fetch(`${API_BASE}/api/quizzes/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
@@ -437,7 +437,7 @@ const handleAIGenerate = async () => {
     const toastId = toast.loading('Deleting quiz...');
     
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app';
       const response = await fetch(`${API_BASE}/api/quizzes/${quizToDelete.id}`, { 
         method: 'DELETE', 
         headers: { 'Authorization': `Bearer ${token}` } 
