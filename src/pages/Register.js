@@ -16,7 +16,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const registerWithGoogle = () => {
   // This points to your backend route that initiates the Google handshake
-  window.location.href = 'http://localhost:5000/user/auth/google';
+  window.location.href = 'https://holistilearn-backend.vercel.app/user/auth/google';
 };
 
   // ✅ Correct Validation Schema
@@ -83,7 +83,7 @@ const Register = () => {
                   console.log(values);
                   setSubmitting(false);
                   try{
-                    const res = await axios.post(`http://localhost:5000/user/register` , values , {
+                    const res = await axios.post(`https://holistilearn-backend.vercel.app/user/register` , values , {
                       headers: {
                         "Content-Type": "application/json"
                       }

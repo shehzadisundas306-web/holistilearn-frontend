@@ -17,7 +17,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await axios.post(`http://localhost:5000/user/forgotPassword`, { email });
+            const res = await axios.post(`https://holistilearn-backend.vercel.app/user/forgotPassword`, { email });
             setMessage(res.data.message || "Reset link sent! Check your inbox.");
             if(res.data.success){
                 navigate(`/verifyOtp/${email}`, {state: {email: email}});

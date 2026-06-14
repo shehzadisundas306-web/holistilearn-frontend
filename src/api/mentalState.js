@@ -4,7 +4,7 @@ import api from '../services/api';
 // Create a separate axios instance for mental state endpoints
 import axios from 'axios';
 
-const MENTAL_STATE_API_URL = process.env.REACT_APP_MENTAL_STATE_API_URL || 'http://localhost:5000/api';
+const MENTAL_STATE_API_URL = process.env.REACT_APP_MENTAL_STATE_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const mentalStateApi = axios.create({
   baseURL: MENTAL_STATE_API_URL,

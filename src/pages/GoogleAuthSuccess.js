@@ -33,7 +33,7 @@ const GoogleAuthSuccess = () => {
     // Fetch user data
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/user/me', {
+        const response = await fetch('https://holistilearn-backend.vercel.app/user/me', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await response.json();

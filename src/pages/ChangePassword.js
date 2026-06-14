@@ -25,7 +25,7 @@ const ChangePassword = () => {
 
         setLoading(true);
         try {
-            const res = await axios.post(`http://localhost:5000/user/changePassword/${email}`, {
+            const res = await axios.post(`https://holistilearn-backend.vercel.app/user/changePassword/${email}`, {
                 newPassword: passwords.newPass,
                 confirmPassword: passwords.confirmPass
                  }

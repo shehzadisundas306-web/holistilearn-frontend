@@ -16,7 +16,7 @@ export const UserProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       setError(null);
-      const response = await axios.post('http://localhost:5000/user/login', { email, password });
+      const response = await axios.post('https://holistilearn-backend.vercel.app/user/login', { email, password });
       
       if (response.data.success) {
         const userData = response.data.user;
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
   const register = async (username, email, password) => {
     try {
       setError(null);
-      const response = await axios.post('http://localhost:5000/user/register', { username, email, password });
+      const response = await axios.post('https://holistilearn-backend.vercel.app/user/register', { username, email, password });
       
       if (response.data.success) {
         return { success: true, message: response.data.message };
@@ -73,7 +73,7 @@ export const UserProvider = ({ children }) => {
     try {
       const currentToken = localStorage.getItem('token');
       if (currentToken) {
-        await axios.post('http://localhost:5000/user/logout', {}, {
+        await axios.post('https://holistilearn-backend.vercel.app/user/logout', {}, {
           headers: { Authorization: `Bearer ${currentToken}` }
         });
       }

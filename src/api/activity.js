@@ -1,7 +1,7 @@
 // frontend/src/api/activity.js
 import axios from 'axios';
 
-const ACTIVITY_API_URL = process.env.REACT_APP_ACTIVITY_API_URL || 'http://localhost:5000/api';
+const ACTIVITY_API_URL = process.env.REACT_APP_ACTIVITY_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const activityApi = axios.create({
   baseURL: ACTIVITY_API_URL,

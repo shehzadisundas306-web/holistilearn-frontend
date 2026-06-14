@@ -41,7 +41,7 @@ const Login = () => {
       // Fetch user data from token
       const fetchUserData = async () => {
         try {
-          const response = await axios.get('http://localhost:5000/user/me', {
+          const response = await axios.get('https://holistilearn-backend.vercel.app/user/me', {
             headers: { Authorization: `Bearer ${token}` }
           });
           
@@ -110,7 +110,7 @@ const Login = () => {
   });
 
   const loginWithGoogle = () => {
-    window.location.href = 'http://localhost:5000/user/auth/google';
+    window.location.href = 'https://holistilearn-backend.vercel.app/user/auth/google';
   };
 
   const getRedirectPath = (user, requiresProfile = false, pendingApproval = false) => {
@@ -174,7 +174,7 @@ const Login = () => {
                 validationSchema={validationSchema}
                 onSubmit={async (values, { setSubmitting }) => {
                   try {
-                    const res = await axios.post(`http://localhost:5000/user/login`, values, {
+                    const res = await axios.post(`https://holistilearn-backend.vercel.app/user/login`, values, {
                       headers: { "Content-Type": "application/json" }
                     });
 

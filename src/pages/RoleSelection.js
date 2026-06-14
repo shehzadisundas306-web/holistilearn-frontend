@@ -34,7 +34,7 @@ const RoleSelection = () => {
       
       // Ensure the port (5000 or 5001) matches your server.js!
       const res = await axios.put(
-        "http://localhost:5000/user/update-role", 
+        "https://holistilearn-backend.vercel.app/user/update-role", 
         { role: selected },
         {
           headers: {

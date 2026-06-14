@@ -4,7 +4,7 @@ import api from '../services/api';
 // Create a separate axios instance for dashboard endpoints
 import axios from 'axios';
 
-const DASHBOARD_API_URL = process.env.REACT_APP_DASHBOARD_API_URL || 'http://localhost:5000/api';
+const DASHBOARD_API_URL = process.env.REACT_APP_DASHBOARD_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const dashboardApi = axios.create({
   baseURL: DASHBOARD_API_URL,

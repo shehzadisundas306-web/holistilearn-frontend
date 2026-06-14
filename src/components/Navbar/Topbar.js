@@ -24,7 +24,7 @@ const Topbar = () => {
       if (!token) return;
       
       try {
-        const response = await axios.get('http://localhost:5000/user/me', {
+        const response = await axios.get('https://holistilearn-backend.vercel.app/user/me', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -78,7 +78,7 @@ const Topbar = () => {
       // Verify user is still active before navigating
       const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
       if (token) {
-        const response = await axios.get('http://localhost:5000/user/me', {
+        const response = await axios.get('https://holistilearn-backend.vercel.app/user/me', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         

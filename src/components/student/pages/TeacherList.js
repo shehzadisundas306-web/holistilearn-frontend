@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import chatService from '../../../services/firebaseChatService';
 
-const API_URL = process.env.REACT_APP_API_URL1 || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
 
 const TeacherList = ({ onStartChat, currentUser }) => {
   const [teachers, setTeachers] = useState([]);

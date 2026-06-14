@@ -17,7 +17,7 @@ const Verify = () => {
         const VerifyEmail = async () => {
             try {
                 // Adjusting to your backend port/route
-                const res = await axios.post(`http://localhost:5000/user/verify`, {}, {
+                const res = await axios.post(`https://holistilearn-backend.vercel.app/user/verify`, {}, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

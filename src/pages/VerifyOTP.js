@@ -50,7 +50,7 @@ const VerifyOTP = () => {
         setLoading(true);
         setError("");
         try {
-            const res = await axios.post(`http://localhost:5000/user/verifyOtp/${email}`, { 
+            const res = await axios.post(`https://holistilearn-backend.vercel.app/user/verifyOtp/${email}`, { 
                 otp: otpCode 
             });
             if (res.data.success) {

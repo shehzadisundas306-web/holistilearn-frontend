@@ -1,7 +1,7 @@
 // frontend/src/api/quiz.js
 import axios from 'axios';
 
-const QUIZ_API_URL = process.env.REACT_APP_QUIZ_API_URL || 'http://localhost:5000/api';
+const QUIZ_API_URL = process.env.REACT_APP_QUIZ_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const quizApi = axios.create({
   baseURL: QUIZ_API_URL,

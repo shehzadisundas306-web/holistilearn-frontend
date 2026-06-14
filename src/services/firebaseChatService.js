@@ -5,7 +5,7 @@ import {
 import { db } from '../firebase/config';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL1 || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
 
 class ChatService {
   constructor() {

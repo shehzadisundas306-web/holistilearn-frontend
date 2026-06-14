@@ -38,7 +38,7 @@ class SocketService {
       return;
     }
 
-    const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+    const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'https://holistilearn-backend.vercel.app/';
     
     try {
       this.socket = io(SOCKET_URL, {

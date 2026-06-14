@@ -1,7 +1,7 @@
 // frontend/src/api/learningPath.js
 import axios from 'axios';
 
-const LEARNING_PATH_API_URL = process.env.REACT_APP_LEARNING_PATH_API_URL || 'http://localhost:5000/api';
+const LEARNING_PATH_API_URL = process.env.REACT_APP_LEARNING_PATH_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const learningPathApi = axios.create({
   baseURL: LEARNING_PATH_API_URL,

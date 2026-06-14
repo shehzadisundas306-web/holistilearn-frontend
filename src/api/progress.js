@@ -1,7 +1,7 @@
 // frontend/src/api/progress.js
 import axios from 'axios';
 
-const PROGRESS_API_URL = process.env.REACT_APP_PROGRESS_API_URL || 'http://localhost:5000/api';
+const PROGRESS_API_URL = process.env.REACT_APP_PROGRESS_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const progressApi = axios.create({
   baseURL: PROGRESS_API_URL,

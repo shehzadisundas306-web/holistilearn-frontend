@@ -105,7 +105,7 @@ const handleProfileUpdate = async () => {
             const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
             if (token) {
                 // You might want to fetch the updated user profile from backend
-                const API_BASE = process.env.REACT_APP_API_URL1 || 'http://localhost:5000';
+                const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
                 const userResponse = await fetch(`${API_BASE}/user/me`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
@@ -206,7 +206,7 @@ const handleProfileUpdate = async () => {
     
     setSaving(true);
     try {
-      const API_BASE = process.env.REACT_APP_API_URL1 || 'http://localhost:5000';
+      const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
       const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
       
       const response = await fetch(`${API_BASE}/user/changePassword/${userEmail}`, {

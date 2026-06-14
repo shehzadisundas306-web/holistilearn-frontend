@@ -12,7 +12,7 @@ const StudentAssignmentCard = ({ assignment, onSubmissionUpdate }) => {
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   
   // ✅ Get backend URL
-  const API_BASE = process.env.REACT_APP_API_URL1 || 'http://localhost:5000';
+  const API_BASE = process.env.REACT_APP_API_URL1 || 'https://holistilearn-backend.vercel.app/';
   
   const dueDate = new Date(assignment.dueDate);
   const isOverdue = dueDate < new Date();

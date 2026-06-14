@@ -114,7 +114,7 @@ export const authService = {
 
   // Google OAuth
   googleLogin: () => {
-    window.location.href = `http://localhost:5000/user/auth/google`;
+    window.location.href = `https://holistilearn-backend.vercel.app/user/auth/google`;
   },
 
   isAuthenticated: () => {

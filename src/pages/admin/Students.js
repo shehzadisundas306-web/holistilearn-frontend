@@ -84,20 +84,6 @@ const Students = () => {
         }
     };
 
-    const handleBlockStudent = async (student) => {
-        setActionLoading(true);
-        try {
-            await updateUserStatus(student._id, !student.isActive);
-            toast.success(`Student ${!student.isActive ? 'blocked' : 'unblocked'} successfully`);
-            fetchStudents();
-            fetchStats();
-        } catch (error) {
-            toast.error('Failed to update student status');
-        } finally {
-            setActionLoading(false);
-        }
-    };
-
     const handleDeleteStudent = async () => {
         if (!selectedStudent) return;
         setActionLoading(true);
@@ -246,14 +232,7 @@ const Students = () => {
                                                 >
                                                     <Eye size={16} />
                                                 </button>
-                                                <button 
-                                                    className={`action-btn-students ${student.isActive ? 'block-btn-students' : 'unblock-btn-students'}`}
-                                                    onClick={() => handleBlockStudent(student)}
-                                                    disabled={actionLoading}
-                                                    title={student.isActive ? 'Block Student' : 'Unblock Student'}
-                                                >
-                                                    {student.isActive ? <UserX size={16} /> : <UserCheck size={16} />}
-                                                </button>
+                                                
                                                 <button 
                                                     className="action-btn-students delete-btn-students"
                                                     onClick={() => {
@@ -339,11 +318,11 @@ const Students = () => {
                         <div className="modal-body">
                             <div className="student-profile">
                                 <div className="profile-avatar">
-                                    {selectedStudent.name?.charAt(0)?.toUpperCase() || 'S'}
+                                    {selectedStudent.username?.charAt(0)?.toUpperCase() || 'S'}
                                 </div>
                                 <div className="profile-info">
                                     <h4>{selectedStudent.name || selectedStudent.username}</h4>
-                                    <p className="email"><Mail size={14} /> {selectedStudent.email}</p>
+                                    <p className="email text-white"><Mail size={14} /> {selectedStudent.email}</p>
                                     <StatusBadge status={selectedStudent.isActive ? 'active' : 'blocked'} />
                                 </div>
                             </div>

@@ -44,7 +44,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen })
       const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
       
       const response = await axios.post(
-        'http://localhost:5000/user/logout',
+        'https://holistilearn-backend.vercel.app/user/logout',
         {},
         {
           headers: {

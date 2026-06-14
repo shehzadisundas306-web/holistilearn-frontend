@@ -186,7 +186,7 @@ const TopNavbar = ({ onMenuClick }) => {
       toast.loading("Logging out...");
       const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:5000/user/logout',
+        'https://holistilearn-backend.vercel.app/user/logout',
         {},
         { headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } }
       );
@@ -215,7 +215,7 @@ const TopNavbar = ({ onMenuClick }) => {
       toast.loading("Updating profile...");
       const token = localStorage.getItem('accessToken') || localStorage.getItem('token');
       const response = await axios.put(
-        'http://localhost:5000/user/profile',
+        'https://holistilearn-backend.vercel.app/user/profile',
         updatedData,
         { headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } }
       );

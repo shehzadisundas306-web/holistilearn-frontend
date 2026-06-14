@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Create a separate axios instance for topics endpoints
-const TOPICS_API_URL = process.env.REACT_APP_TOPICS_API_URL || 'http://localhost:5000/api';
+const TOPICS_API_URL = process.env.REACT_APP_TOPICS_API_URL || 'https://holistilearn-backend.vercel.app/api';
 
 const topicsApi = axios.create({
   baseURL: TOPICS_API_URL,
